@@ -1,106 +1,112 @@
 ---
-title: "Quarto Academic, PhD"
-description-meta: "Quarto Academic Website Template adapted by Dr. Gang He"
-image: "files/images/placeholder4.JPG"
+title: "Emily K. Johnson"
+description-meta: "Emily K. Johnson - Population Health Scientist"
+image: "files/images/IMG_0803.jpeg"
 page-navigation: false
 toc: false
-#sidebar: false
 page-layout: full
 
 about:
   id: hero-heading
-  template: trestles
-  image-width: 70%
+  template: solana
+  image-shape: round
+  image-width: 15em
   links:
-    - icon: sun
-      text: Lab
-      href: https://www.github.com
-      target: _blank
-    - icon: globe
-      text: Uprofile
-      href: https://baruch.cuny.edu
-      target: _blank
-    - icon: envelope
-      text: E-mail
-      href: mailto:email@gmail.com    
+    - icon: envelope-fill
+      text: Email
+      href: mailto:ejohnson@health.sdu.dk
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/emilykatherinejohnson/
       target: _blank
-    - icon: youtube
-      text: YouTube
-      href: https://www.youtube.com     
-      target: _blank 
-    - text: "{{< ai orcid >}} ORCID"   # use academic icons, "" are needed, you also need to install the fontawesome extension
-      href: https://orcid.org
+    - text: "{{< ai orcid >}}"
+      href: https://orcid.org/0000-0001-9213-9533
       target: _blank
-    - text: "{{< ai clarivate >}} Web of Science"
-      href: https://www.webofscience.com  
+    - text: "{{< ai google-scholar >}}"
+      href: https://scholar.google.com/citations?user=upRo6SsAAAAJ&hl=en
       target: _blank
-    - text: "{{< ai scopus >}} Scopus"
-      href: https://www.scopus.com
+    - icon: github
+      text: GitHub
+      href: https://github.com/ekjohnsonphd
       target: _blank
-    - text: "{{< ai google-scholar >}} Google Scholar"
-      href: https://scholar.google.com
-      target: _blank
-#    - text: "{{< ai researchgate >}} Research Gate"
-#      href: https://www.researchgate.net
-#      target: _blank
-
-listing:   # Comment the listing section and delete corresponding lines in the index.qmd file to remove the recent posts
-  - id: recent-posts
-    contents: 
-      - posts
-      - posts/post-links.yml
-    exclude:
-      title: ""
-    type: grid
-    max-items: 3
-#    image-height: 150px
-    page-size: 3 #set same as max-times to remove the page number setting
-    fields: [image, date, title, subtitle]
-    max-description-length: 75
-    sort: 
-      - "date desc"
-      - "title asc"
 ---
 
 :::{#hero-heading}
 
-I'm a [Quarto Academeic Website Template](https://github.com/drganghe/quarto-academic-website-template) adapted by [Dr. Gang He](http://drganghe.github.io).
+## About Me
 
-I'm a template that you can fork to build your own website with easy adaptation and deployment.
+I'm a PhD student at the [Danish Centre for Health Economics](https://www.sdu.dk/en/dache) at the University of Southern Denmark, where I investigate the complex relationships between population health, healthcare expenditures, and disease burden.
 
-1. **Star** this repository to bookmark it for future reference.  
-1. **Fork** this repository and rename it to `YourGitHubUserName.github.io`.  
-1. **Update** the `_quarto.yml` file to configure your site’s basic settings.  
-1. **Add or edit content** in the following files and folders:
-   - `/posts/` – posts about publications, news, events  
-   - `teaching.qmd` – teaching information  
-   - `projects.yml` – research or other projects  
-   - `people.qmd` and `/people/` – team or collaborators  
-   - `/files/` - profiles, images, pdfs, and includes 
-1. [**Render and preview**](https://quarto.org/docs/websites/) your site locally.  
-1. [**Publish**](https://quarto.org/docs/publishing/github-pages.html) your site using GitHub Pages (make sure [configuring](https://quarto.org/docs/publishing/images/gh-pages-docs-dir.png) your GitHub repository to publish from the `docs` directory, not the `root` folder). 
-1. **Refine and polish** your content and design as needed.  
-1. ✅ Enjoy your new website!
+My research bridges quantitative methods with real-world health policy challenges, leveraging large-scale health data to understand how we can better allocate resources and improve population outcomes. Before my PhD, I spent four years at the [Institute for Health Metrics and Evaluation (IHME)](https://www.healthdata.org/) as a Research Scientist, contributing to global burden of disease research that informs health policy worldwide.
 
-## Experience
+:::
 
-- Researcher, Univerisity
+---
 
+::: {.grid}
+::: {.g-col-12 .g-col-md-4}
+## Research Interests
+
+**Health Economics**
+Healthcare expenditure, resource allocation, systems incentives
+
+**Population Health**
+Disease burden estimation, comparative outcomes, fertility, mortality
+
+**Quantitative Methods**
+Causal inference, predictive modeling, large-scale data analysis
+
+**Health Policy**
+Evidence-based policy, health systems, health equity
+:::
+
+::: {.g-col-12 .g-col-md-4}
 ## Education
 
-- PhD, Univerisity
+**PhD in Health Economics** <br>
+*University of Southern Denmark* <br>
+In Progress <br>
 
+**MSc in Health Data Science** <br>
+*London School of Economics* <br>
+2022 <br>
+
+**PgCert in Epidemiology** <br>
+*University of Edinburgh* <br>
+2022 <br>
+
+**BA in Statistics** <br>
+*Rice University* <br>
+2017 <br>
+:::
+
+::: {.g-col-12 .g-col-md-4}
+## Experience
+
+**Institute for Health Metrics and Evaluation** <br>
+*Research Scientist,* 2019-2023
+
+- Clinical Informatics researcher, Global Burden of Disease
+- Integrated Medicare and Medicaid data to IHME data ecosystem
+- Disease expenditure researcher, US Counties Health Expenditure project
+
+**Epic Systems** <br>
+*Technical Services Engineer,* 2017-2019
+
+- Built EHR reporting of value-based health plans
+- Supported healthcare data workflows 
 :::
 
 
-<!-- Delete the following section and delete corresponding lines in the yaml part to remove the recent posts -->
-## Recent Posts
-Check out the latest &nbsp;[Papers](posts.qmd#category=paper)&nbsp;, &nbsp;[News](posts.qmd#category=news)&nbsp;, &nbsp;[Events](posts.qmd#category=event)&nbsp;, and &nbsp;[More »](/posts.qmd)
 
-:::{#recent-posts}
 :::
 
-<p align="right">[All Posts »](/posts.qmd)</p>
+---
+
+## Contact
+
+**Email:** [ejohnson@health.sdu.dk](mailto:ejohnson@health.sdu.dk)
+
+**Affiliation:** Danish Centre for Health Economics, University of Southern Denmark, Odense
+
+Find me on [LinkedIn](https://www.linkedin.com/in/emilykatherinejohnson/), [GitHub](https://github.com/ekjohnsonphd), [ORCID](https://orcid.org/0000-0001-9213-9533), and [Google Scholar](https://scholar.google.com/citations?user=upRo6SsAAAAJ&hl=en).

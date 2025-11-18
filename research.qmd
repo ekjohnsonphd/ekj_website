@@ -1,0 +1,42 @@
+---
+title: "Research"
+description: "Research interests and projects"
+---
+
+## Research Interests
+
+My research focuses on [describe your main research areas and themes].
+
+### Current Research Areas
+
+**[Research Area 1]**
+
+Description of your first major research area and what questions you're addressing.
+
+**[Research Area 2]**
+
+Description of your second major research area and what questions you're addressing.
+
+**[Research Area 3]**
+
+Description of your third major research area and what questions you're addressing.
+
+## Current Projects
+
+### [Project Title 1]
+
+Brief description of the project, funding source, and collaborators.
+
+### [Project Title 2]
+
+Brief description of the project, funding source, and collaborators.
+
+## Past Projects
+
+### [Past Project Title]
+
+Brief description of completed project and outcomes.
+
+## Collaborators
+
+I collaborate with researchers at [institutions/organizations].
