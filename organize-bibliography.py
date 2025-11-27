@@ -64,7 +64,6 @@ def main():
     with open('publications.qmd', 'w') as f:
         f.write(f"""---
 title: "Publications"
-description: "Published research and scholarly works"
 bibliography: articles.bib
 csl: apa.csl
 nocite: '@*'
