@@ -2,7 +2,7 @@
 **/*.html
 **/*.jpg
 **/*.pdf
-
+docs/*
 
 # System files
 **/.DS_Store

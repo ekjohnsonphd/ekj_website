@@ -1,7 +1,0 @@
----
-bibliography: articles.bib
-nocite: '@*'
----
-
-::: {#refs}
-:::

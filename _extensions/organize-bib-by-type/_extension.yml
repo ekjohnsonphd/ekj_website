@@ -1,7 +1,0 @@
-title: Organize Bibliography by Type
-author: Auto-generated
-version: 1.0.0
-quarto-required: ">=1.2.0"
-contributes:
-  filters:
-    - organize-bib-by-type.lua
