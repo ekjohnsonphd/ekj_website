@@ -1,5 +1,5 @@
 ---
-title: "Emily Johnson"
+title: ""
 description-meta: "Emily K. Johnson - Population Health Scientist"
 image: "files/images/IMG_0803.jpeg"
 page-navigation: false

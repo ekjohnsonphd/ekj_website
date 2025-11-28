@@ -1,29 +1,51 @@
-# Quarto Academic Website Template
+# Emily K. Johnson - Professional Website
 
-Welcome! This is a simple and customizable template for building your own academic website using [Quarto](https://quarto.org/). You can easily fork, edit, and publish your site with just a few steps.
+Personal academic website for Emily K. Johnson, PhD student in Health Economics at the University of Southern Denmark.
 
-## 🚀 Quick Start
+🔗 **Live site**: [https://ekjohnsonphd.github.io/quarto-professional-website-emily/](https://ekjohnsonphd.github.io/quarto-professional-website-emily/)
 
-1. **Star** this repository to bookmark it for future reference.  
-1. **Fork** this repository and rename it to `YourGitHubUserName.github.io`.  
-1. **Update** the `_quarto.yml` file to configure your site’s basic settings.  
-1. **Add or edit content** in the following files and folders:
-   - `/posts/` – posts about publications, news, events  
-   - `teaching.qmd` – teaching information  
-   - `projects.yml` – research or other projects  
-   - `people.qmd` and `/people/` – team or collaborators  
-   - `/files/` - profiles, images, pdfs, and includes 
-1. [**Render and preview**](https://quarto.org/docs/websites/) your site locally.  
-1. [**Publish**](https://quarto.org/docs/publishing/github-pages.html) your site using GitHub Pages (make sure [configuring](https://quarto.org/docs/publishing/images/gh-pages-docs-dir.png) your GitHub repository to publish from the `docs` directory, not the `root` folder).  
-1. **Refine and polish** your content and design as needed.  
-1. ✅ Enjoy your new website!
+## About
 
-## 🛠 Requirements
+This website showcases my research in population health metrics, health spending, and administrative health data. The site includes:
 
-- Install [Quarto](https://quarto.org/docs/get-started/)
-- Learn the basics from the [official Quarto documentation](https://quarto.org/docs/guide/)
-- Try publishing the site *before* making major changes to confirm it runs correctly
+- **Home**: Overview of my background, research interests, education, and experience
+- **Research**: Current and past research projects
+- **Publications**: Academic publications with automated bibliography management
+- **CV**: Downloadable curriculum vitae
 
-## 📚 More Examples & Tips
+## Technical Details
 
-- [Quarto Academic Site Examples and Tips](https://drganghe.github.io/quarto-academic-site-examples.html)
+This site is built with [Quarto](https://quarto.org/) and deployed via GitHub Pages. Key features include:
+
+- Custom CSS styling
+- Automated publication list generation from BibTeX using `organize-bibliography.py`
+- Responsive design for mobile and desktop viewing
+- Academic icons integration for ORCID, Google Scholar, etc.
+
+### Site Structure
+
+- `index.qmd` - Home page with sidebar layout
+- `research.qmd` - Research interests and projects
+- `cv.qmd` - CV download page
+- `references.bib` - Master bibliography file
+- `organize-bibliography.py` - Script to generate publications page from bibliography
+- `styles.css` - Custom styling
+- `_quarto.yml` - Site configuration
+- `files/` - Static files (images, PDFs)
+- `docs/` - Rendered site (published to GitHub Pages)
+
+## Building Locally
+
+```bash
+quarto render
+```
+
+The site is configured to render to the `docs/` directory for GitHub Pages deployment.
+
+## Credits
+
+This website was built using a [Quarto academic website template](https://drganghe.github.io/quarto-academic-site-examples.html) and customized for my personal branding and research focus.
+
+## License
+
+Content © 2025 Emily K. Johnson. All rights reserved.
