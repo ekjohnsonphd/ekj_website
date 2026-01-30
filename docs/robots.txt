@@ -1,1 +1,1 @@
-Sitemap: https://yourusername.github.io/quarto-professional-website-emily/sitemap.xml
+Sitemap: https://ekjohnson.com/sitemap.xml

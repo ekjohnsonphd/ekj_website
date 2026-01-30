@@ -2,6 +2,8 @@ project:
   type: website
   output-dir: docs
   pre-render: python3 organize-bibliography.py
+  resources:
+    - CNAME
 
 # Meta
 description-meta: "Emily K. Johnson Professional Website"
@@ -39,7 +41,7 @@ website:
   
   open-graph: true
 
-  site-url: "https://yourusername.github.io/quarto-professional-website-emily"
+  site-url: "https://ekjohnson.com"
   
 bibliography: references.bib
 
