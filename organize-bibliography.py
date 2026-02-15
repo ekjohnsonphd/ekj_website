@@ -45,7 +45,7 @@ def main():
     print("Extracting journal articles...")
 
     # Parse and extract articles
-    articles = parse_bib_file('references.bib')
+    articles = parse_bib_file('_assets/bibliography/references.bib')
 
     # Sort by year (most recent first)
     articles.sort(key=lambda x: x[0], reverse=True)
@@ -55,7 +55,7 @@ def main():
     first_author_pubs = sum(1 for _, _, is_first in articles if is_first)
 
     # Write articles.bib
-    with open('articles.bib', 'w', encoding='utf-8') as f:
+    with open('_assets/bibliography/articles.bib', 'w', encoding='utf-8') as f:
         for _, entry, _ in articles:
             f.write(entry)
             f.write('\n\n')
@@ -64,8 +64,8 @@ def main():
     with open('publications.qmd', 'w') as f:
         f.write(f"""---
 title: "Publications"
-bibliography: articles.bib
-csl: apa.csl
+bibliography: _assets/bibliography/articles.bib
+csl: _assets/bibliography/apa.csl
 nocite: '@*'
 ---
 

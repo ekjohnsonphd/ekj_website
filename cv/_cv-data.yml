@@ -1,0 +1,221 @@
+name: "Emily K. Johnson"
+links:
+  linkedin: "https://www.linkedin.com/in/emilykatherinejohnson/"
+  researchgate: "https://www.researchgate.net/profile/Emily-Johnson-107"
+
+summary: >
+  Graduate student and population health researcher with over 7 years of experience with administrative data,
+  health metrics measurement, and data science and biostatistical methods. Published author in prominent
+  health policy journals with substantive experience with big data and health systems knowledge. Seeking
+  opportunities to contribute to the body of health policy research.
+
+education:
+  - institution: "University of Southern Denmark"
+    location: "Odense, DK"
+    degree: "Doctor of Philosophy in Health Economics"
+    date: "Expected 2026"
+    details:
+      - "Affiliations: Danish Center for Health Economics, Danish Institute for Advanced Study"
+      - "Supervised by Angela Chang, DSc, Liza Sopina, PhD, and Harsh Parikh, PhD"
+
+  - institution: "Johns Hopkins University"
+    location: "Baltimore, MD, USA"
+    degree: "Visiting Graduate Student, online and in person"
+    date: "May 2025 – March 2026"
+
+  - institution: "London School of Economics"
+    location: "London, UK"
+    degree: "Master of Science in Health Data Science"
+    date: "July 2023"
+    honors: "Level: Distinction"
+    details:
+      - "**Prize for Excellence in MSc Health Data Science** – Highest Average 2022/23"
+      - "Program Representative, Student Staff Liaison Committee"
+
+  - institution: "University of Edinburgh"
+    location: "Edinburgh, UK"
+    degree: "Postgraduate Certificate in Epidemiology"
+    date: "September 2023"
+
+  - institution: "University of Washington"
+    location: "Seattle, WA, USA"
+    degree: "Non-matriculated postgraduate student during full-time employment"
+    date: "2019-2022"
+
+  - institution: "Rice University"
+    location: "Houston, TX, USA"
+    degree: "Bachelor of Arts in Statistics, Minor in Global Health Technologies"
+    date: "May 2017"
+    honors: "GPA: 3.52"
+
+publications:
+  peer_reviewed:
+    - authors: "**Johnson EK**, Parikh H, Olsen KR, Chang AY, Sopina L."
+      title: "Breast cancer and income loss in Denmark: heterogeneous outcomes and longitudinal effects."
+      journal: "Nature Communications"
+      year: 2025
+
+    - authors: "Chang AY, **Johnson EK**, Bolongaita S, et al."
+      title: "Balancing the scales: Towards a more objective measure of sex inequalities in life expectancy."
+      journal: "PLOS Medicine"
+      year: 2025
+      note: "forthcoming"
+
+    - authors: "Lescinsky H, Sahu M, Beauchamp M, Crosby SW, **Johnson EK**, McHugh TA, Scott JW, Schulman K, Thomson A, Weil M, Dieleman JL, Milstein A."
+      title: "Exploring state-level change in health care value over three decades in the United States, 1991-2020."
+      journal: "Health Services Research"
+      year: 2025
+
+    - authors: "Aagaard A, Röttger R, **Johnson EK**, Olsen KR."
+      title: "Comparing the predictive performance of diabetes complications using administrative health data and clinical data."
+      journal: "Scientific Reports"
+      year: 2025
+
+    - authors: "Dieleman JL, Beauchamp M, Crosby SW, DeJarnatt D, **Johnson EK**, Lescinsky H, McHugh T, Pollock I, Sahu M, Swart V, Taylor KV, Thomson A, Tsakalos G, Weil M, Wilner LB, Bui AL, Duber HC, Haakenstad A, Idrisov B, Mokdad A, Naghavi M, Roth G, Scott JW, Templin T, Murray CJL."
+      title: "Tracking US health care spending by health condition and county."
+      journal: "JAMA"
+      year: 2025
+
+    - authors: "Global Burden of Disease USA Collaborator Network."
+      title: "The burden of diseases, injuries, and risk factors by state in the USA, 1990–2021: a systematic analysis for the Global Burden of Disease Study 2021."
+      journal: "The Lancet"
+      year: 2024
+
+    - authors: "Norheim OF, Chang AY, Bolongaita S, Barraza-Llorens M, Fawole A, Tadesse Gebremedhin L, Gonzalez-Pier E, Jha P, **Johnson EK**, Karlsson O, Kiros M, Lewington S, Mao W, Ogbuoji O, Pate M, Sargent JL, Tang X, Yamey G, Jamison DT, Peto R."
+      title: "Halving premature death and improving quality of life at all ages: cross-country analyses of past trends and future directions."
+      journal: "The Lancet"
+      year: 2024
+
+    - authors: "Global Burden of Disease Collaborator Network."
+      title: "Global incidence, prevalence, years lived with disability (YLDs), disability-adjusted life-years (DALYs), and healthy life expectancy (HALE) for 371 diseases and injuries in 204 countries and territories and 811 subnational locations, 1990–2021: a systematic analysis for the Global Burden of Disease Study 2021."
+      journal: "The Lancet"
+      year: 2024
+
+    - authors: "Paget J, Staadegarde L, Wang X, Li Y, van Pomeren T, van Summeren J, Dueckers M, Chaves SC, **Johnson EK**, Mahe C, Nair H, Viboud C, Spreeuwenberg P."
+      title: "Global and national influenza-associated hospitalisation rates: Estimates for 40 countries and administrative regions."
+      journal: "Journal of Global Health"
+      year: 2023
+
+    - authors: "**Johnson EK**, Wojtesta M, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu M, Thomson A, Tsakalos G, Weil MS, Haakenstad A, Mokdad A, Murray CJL, Dieleman JL."
+      title: "Varied health spending growth across US states associated with income, hospitals, and insurance market concentration."
+      journal: "Health Affairs"
+      year: 2022
+
+    - authors: "Roberts NSL, **Johnson EK**, Zheng SM, Hamilton E, Abdoli A, et al."
+      title: "Global mortality of snakebite envenoming between 1990 and 2019."
+      journal: "Nature Communications"
+      year: 2022
+
+    - authors: "**Johnson EK**, Sylte D, Chaves SS, Li Y, Mahe C, Nair H, Paget J, van Pomeren T, Shi T, Viboud C, James SL."
+      title: "Hospital utilization rates for influenza and RSV: a novel approach and critical assessment."
+      journal: "Population Health Metrics"
+      year: 2021
+
+    - authors: "Li Y, **Johnson EK**, Shi T, Campbell H, Chaves SS, Commaille-Chapus C, Dighero I, James SL, Mahe C, Ooi Y, Paget J, van Pomeren T, Viboud C, Nair H."
+      title: "National burden estimates of hospitalisations for acute lower respiratory infections due to respiratory syncytial virus in young children in 2019 among 58 countries: a modelling study."
+      journal: "The Lancet Respiratory Medicine"
+      year: 2020
+
+  in_progress:
+    - authors: "**Johnson EK**, Parikh H, Ettman C, Ge G, Sopina L, Chang AY."
+      title: "The lasting income costs of illness: a Danish register study of mental and physical disorders."
+      status: "Manuscript under review"
+
+  other_media:
+    - authors: "Chang AY, **Johnson EK**."
+      title: "Confronting the systematic invisibility of women's health."
+      journal: "The Lancet Obstetrics, Gynaecology, & Women's Health"
+      type: "commentary"
+      year: 2025
+
+    - authors: "**Johnson EK**, Dieleman JL."
+      title: "Standardizing State Health Spending."
+      journal: "Health Affairs Forefront"
+      type: "blog post"
+      year: 2022
+
+research_experience:
+  - institution: "University of Southern Denmark, Danish Center for Health Economics"
+    location: "Odense, DK"
+    positions:
+      - title: "Graduate student – Experienced Burden of Disease Project"
+        dates: "2023 - Present"
+        details:
+          - "Measuring the economic, social, and health loss attributable to breast cancer, stroke, alcohol use disorder and depression over an 18-year period in Denmark using administrative health, education, and economic data."
+      - title: "Graduate student – Predicting Early Mortality Project"
+        dates: "2023 – Present"
+        details:
+          - "Identifying and describing individuals who dies early in Denmark using machine learning and decomposition methods and over 2000 individual-level health, economic, demographic and social characteristics."
+      - title: "Contributor – International Network on Comparative Resource Use"
+        dates: "2024 – Present"
+        details:
+          - "Comparing hospital resource use by disease, age, sex, and comorbidity status in Denmark to 16 other high-income countries globally in collaboration with the University of Oxford and Institute of Health Metrics and Evaluation."
+
+  - institution: "University of Washington, Institute for Health Metrics and Evaluation"
+    location: "Seattle, WA"
+    positions:
+      - title: "Research Scientist I – US Disease Expenditure Project"
+        dates: "2021 - 2023"
+        details:
+          - "Estimated US county and state-level disease-specific health expenditure by payer and type of care from 2000-2019, using billions of rows of administrative data and econometric and small area estimation methods."
+      - title: "Research Scientist I – Global Burden of Disease (GBD), Clinical Informatics"
+        dates: "2019-2021"
+        details:
+          - "Estimated incidence and prevalence of disease through Bayesian mixed effects modeling for 85 diseases and injuries using hospital administrative data from over 30 countries. Modeled outputs are a key input to Global Burden of Disease morbidity modeling."
+
+conference_presentations:
+  - authors: "Johnson EK, Parikh H, Ettman C, Ge G, Sopina L, Chang AY"
+    title: "Lasting Income Costs of Illness: a Danish Register Study of Mental and Physical Disorders."
+    venues:
+      - "Årsmøde i Dansk Selskabe i Sundhedsøkonomi, Odense DK. September 2025. Oral presentation."
+      - "European Health Economics PhD Conference, Brussels BE. September 2025. Oral presentation."
+      - "Nordic Health Economics Study Group, Oslo NO. August 2025. Oral presentation."
+      - "International Health Economics Association Congress, Bali ID. July 2025. Oral presentation."
+
+  - authors: "Johnson EK, Parikh H, Sopina L, Olsen KR, Chang AY"
+    title: "Economic Burden of Breast Cancer in Denmark: Longitudinal Estimates and Heterogeneous Effects."
+    venues:
+      - "International Health Economics Association Congress, Bali ID. July 2025. Oral presentation."
+      - "Nordic Epidemiology Conference, Copenhagen DK. May 2025. Oral presentation."
+
+  - authors: "Johnson EK, Wojtesta M, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu M, Thomson A, Tsakalos G, Weil MS, Haakenstad A, Mokdad A, Murray CJL, Dieleman JL"
+    title: "Variation in US State Health Spending Grows and Is Associated with Income, Health System Capacity, Insurance Coverage and Market Concentration."
+    venues:
+      - "American Society of Health Economists Conference, Austin US. June 2022. Oral presentation."
+
+teaching_experience:
+  - institution: "University of Southern Denmark"
+    location: "Esbjerg, DK"
+    roles:
+      - title: "Lecturer, examiner, and course administrator – Global Health Policy Graduate Course"
+        date: "Spring 2024"
+      - title: "MSc. thesis supervision – MSc. Data Science, 4 students"
+        date: "Spring 2024, 2025"
+
+  - institution: "Rice University"
+    location: "Houston, TX"
+    roles:
+      - title: "Teaching assistant – Global Health Technology Undergraduate Course"
+        date: "Spring 2017"
+      - title: "Teaching assistant – Probability and Statistics Undergraduate Course"
+        date: "Fall 2016"
+
+other_experience:
+  - organization: "Epic Systems Corporation"
+    location: "Madison, WI"
+    positions:
+      - title: "Technical Services Manager"
+        dates: "2018 – 2019"
+        details:
+          - "Supervised technical services analysts on the Healthy Planet value-based care and risk management application. Conducted performance evaluations, assigned customer projects, and coached new hires in technical skills."
+      - title: "Technical Services Analyst"
+        dates: "2017 – 2018"
+        details:
+          - "Managed project to integrate claims data sent from payer contracts into the Epic data warehouse and patient medical records for clinical decision-making. Improved quality of care metrics by 35% with additional data."
+          - "Supported an implementation of Epic software for a value-based care management and pediatric diabetes initiative in California. Built and tested tools for reporting, patient tracking, and care planning used by 53 care managers and health coaches, who enrolled 5000 new patients."
+
+skills:
+  - "8 years experience in R (data.table, dplyr, arrow, ggplot, plotly), 6 in Python (pandas, seaborn, matplotlib, arrow), and 3 in SQL."
+  - "Experienced with Github, repository management, and version control."
+  - "Experienced with parquet, Spark, Arrow, distributed and cluster-based computation, and management of big data on the scale of billions of rows and tens of terabytes of memory."
+  - "Conversant in French, Spanish and Danish."

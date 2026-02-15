@@ -1,7 +1,7 @@
 ---
 title: ""
 description-meta: "Emily K. Johnson - Population Health Scientist"
-image: "files/images/IMG_0803.jpeg"
+image: "_assets/images/IMG_0803.jpeg"
 page-navigation: false
 toc: false
 page-layout: custom
@@ -10,7 +10,7 @@ page-layout: custom
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-3 #sidebar}
-![](files/images/IMG_0803.jpeg){.profile-img}
+![](_assets/images/IMG_0803.jpeg){.profile-img}
 
 
 ::: {.social-links}
