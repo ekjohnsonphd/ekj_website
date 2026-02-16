@@ -1,7 +1,7 @@
 ---
 title: "Publications"
-bibliography: articles.bib
-csl: apa.csl
+bibliography: _assets/bibliography/articles.bib
+csl: _assets/bibliography/apa.csl
 nocite: '@*'
 ---
 
@@ -82,7 +82,7 @@ nocite: '@*'
 ::: {.pub-stats}
 ::: {.stat-grid}
 <div class="stat-item">
-<span class="stat-number">12</span>
+<span class="stat-number">14</span>
 <span class="stat-label">publications</span>
 </div>
 

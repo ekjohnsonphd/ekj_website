@@ -19,7 +19,7 @@ def main():
 
     # YAML front matter for Typst PDF
     lines.append("---")
-    lines.append(f'title: "{cv["name"]}"')
+    lines.append('title: ""')
     lines.append("format:")
     lines.append("  typst:")
     lines.append("    margin:")

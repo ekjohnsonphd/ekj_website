@@ -20,7 +20,7 @@ education:
 
   - institution: "Johns Hopkins University"
     location: "Baltimore, MD, USA"
-    degree: "Visiting Graduate Student, online and in person"
+    degree: "Visiting Graduate Student"
     date: "May 2025 – March 2026"
 
   - institution: "London School of Economics"
@@ -55,11 +55,10 @@ publications:
       journal: "Nature Communications"
       year: 2025
 
-    - authors: "Chang AY, **Johnson EK**, Bolongaita S, et al."
-      title: "Balancing the scales: Towards a more objective measure of sex inequalities in life expectancy."
-      journal: "PLOS Medicine"
+    - authors: "Chang AY, **Johnson EK**, Bolongaita S, Buse K, Hawkes SJ, Karlsson O, Knaul FM, Kruk ME, Norheim OF, Ogbuoji O, Watkins D, Jamison DT."
+      title: "From sex differences to sex inequalities in life expectancy: a cross-country observational benchmarking analysis."
+      journal: "PLoS Medicine"
       year: 2025
-      note: "forthcoming"
 
     - authors: "Lescinsky H, Sahu M, Beauchamp M, Crosby SW, **Johnson EK**, McHugh TA, Scott JW, Schulman K, Thomson A, Weil M, Dieleman JL, Milstein A."
       title: "Exploring state-level change in health care value over three decades in the United States, 1991-2020."

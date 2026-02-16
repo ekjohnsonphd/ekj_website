@@ -1,9 +1,7 @@
 project:
   type: website
   output-dir: docs
-  pre-render:
-    - python3 organize-bibliography.py
-    - python3 cv/generate-cv.py
+  pre-render: python3 organize-bibliography.py
   resources:
     - CNAME
 

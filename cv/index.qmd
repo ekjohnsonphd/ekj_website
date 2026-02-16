@@ -1,0 +1,341 @@
+---
+title: "Curriculum Vitae"
+toc: true
+toc-depth: 2
+page-navigation: false
+format:
+  html:
+    css: cv.css
+---
+
+::: {.cv-header}
+# Emily K. Johnson
+::: {.cv-links}
+[LinkedIn](https://www.linkedin.com/in/emilykatherinejohnson/) | [ResearchGate](https://www.researchgate.net/profile/Emily-Johnson-107)
+:::
+:::
+
+::: {.cv-download}
+[{{< fa file-pdf >}} Download PDF](cv-pdf.pdf){.btn .btn-primary}
+:::
+
+## Summary {.cv-section}
+
+::: {.cv-summary}
+Graduate student and population health researcher with over 7 years of experience with administrative data, health metrics measurement, and data science and biostatistical methods. Published author in prominent health policy journals with substantive experience with big data and health systems knowledge. Seeking opportunities to contribute to the body of health policy research.
+:::
+
+## Education {.cv-section}
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Southern Denmark**]{.cv-institution}
+[Odense, DK]{.cv-location}
+:::
+::: {.cv-position}
+[*Doctor of Philosophy in Health Economics*]{.cv-title}
+[Expected 2026]{.cv-dates}
+:::
+
+- Affiliations: Danish Center for Health Economics, Danish Institute for Advanced Study
+- Supervised by Angela Chang, DSc, Liza Sopina, PhD, and Harsh Parikh, PhD
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**Johns Hopkins University**]{.cv-institution}
+[Baltimore, MD, USA]{.cv-location}
+:::
+::: {.cv-position}
+[*Visiting Graduate Student*]{.cv-title}
+[May 2025 – March 2026]{.cv-dates}
+:::
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**London School of Economics**]{.cv-institution}
+[London, UK | Level: Distinction]{.cv-location}
+:::
+::: {.cv-position}
+[*Master of Science in Health Data Science*]{.cv-title}
+[July 2023]{.cv-dates}
+:::
+
+- **Prize for Excellence in MSc Health Data Science** – Highest Average 2022/23
+- Program Representative, Student Staff Liaison Committee
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Edinburgh**]{.cv-institution}
+[Edinburgh, UK]{.cv-location}
+:::
+::: {.cv-position}
+[*Postgraduate Certificate in Epidemiology*]{.cv-title}
+[September 2023]{.cv-dates}
+:::
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Washington**]{.cv-institution}
+[Seattle, WA, USA]{.cv-location}
+:::
+::: {.cv-position}
+[*Non-matriculated postgraduate student during full-time employment*]{.cv-title}
+[2019-2022]{.cv-dates}
+:::
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**Rice University**]{.cv-institution}
+[Houston, TX, USA | GPA: 3.52]{.cv-location}
+:::
+::: {.cv-position}
+[*Bachelor of Arts in Statistics, Minor in Global Health Technologies*]{.cv-title}
+[May 2017]{.cv-dates}
+:::
+:::
+
+## Publications {.cv-section}
+
+### Peer reviewed publications
+
+*All authors listed from first to last*
+
+::: {.cv-publication}
+**Johnson EK**, Parikh H, Olsen KR, Chang AY, Sopina L. Breast cancer and income loss in Denmark: heterogeneous outcomes and longitudinal effects. *Nature Communications*. 2025.
+:::
+
+::: {.cv-publication}
+Chang AY, **Johnson EK**, Bolongaita S, Buse K, Hawkes SJ, Karlsson O, Knaul FM, Kruk ME, Norheim OF, Ogbuoji O, Watkins D, Jamison DT. From sex differences to sex inequalities in life expectancy: a cross-country observational benchmarking analysis. *PLoS Medicine*. 2025.
+:::
+
+::: {.cv-publication}
+Lescinsky H, Sahu M, Beauchamp M, Crosby SW, **Johnson EK**, McHugh TA, Scott JW, Schulman K, Thomson A, Weil M, Dieleman JL, Milstein A. Exploring state-level change in health care value over three decades in the United States, 1991-2020. *Health Services Research*. 2025.
+:::
+
+::: {.cv-publication}
+Aagaard A, Röttger R, **Johnson EK**, Olsen KR. Comparing the predictive performance of diabetes complications using administrative health data and clinical data. *Scientific Reports*. 2025.
+:::
+
+::: {.cv-publication}
+Dieleman JL, Beauchamp M, Crosby SW, DeJarnatt D, **Johnson EK**, Lescinsky H, McHugh T, Pollock I, Sahu M, Swart V, Taylor KV, Thomson A, Tsakalos G, Weil M, Wilner LB, Bui AL, Duber HC, Haakenstad A, Idrisov B, Mokdad A, Naghavi M, Roth G, Scott JW, Templin T, Murray CJL. Tracking US health care spending by health condition and county. *JAMA*. 2025.
+:::
+
+::: {.cv-publication}
+Global Burden of Disease USA Collaborator Network. The burden of diseases, injuries, and risk factors by state in the USA, 1990–2021: a systematic analysis for the Global Burden of Disease Study 2021. *The Lancet*. 2024.
+:::
+
+::: {.cv-publication}
+Norheim OF, Chang AY, Bolongaita S, Barraza-Llorens M, Fawole A, Tadesse Gebremedhin L, Gonzalez-Pier E, Jha P, **Johnson EK**, Karlsson O, Kiros M, Lewington S, Mao W, Ogbuoji O, Pate M, Sargent JL, Tang X, Yamey G, Jamison DT, Peto R. Halving premature death and improving quality of life at all ages: cross-country analyses of past trends and future directions. *The Lancet*. 2024.
+:::
+
+::: {.cv-publication}
+Global Burden of Disease Collaborator Network. Global incidence, prevalence, years lived with disability (YLDs), disability-adjusted life-years (DALYs), and healthy life expectancy (HALE) for 371 diseases and injuries in 204 countries and territories and 811 subnational locations, 1990–2021: a systematic analysis for the Global Burden of Disease Study 2021. *The Lancet*. 2024.
+:::
+
+::: {.cv-publication}
+Paget J, Staadegarde L, Wang X, Li Y, van Pomeren T, van Summeren J, Dueckers M, Chaves SC, **Johnson EK**, Mahe C, Nair H, Viboud C, Spreeuwenberg P. Global and national influenza-associated hospitalisation rates: Estimates for 40 countries and administrative regions. *Journal of Global Health*. 2023.
+:::
+
+::: {.cv-publication}
+**Johnson EK**, Wojtesta M, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu M, Thomson A, Tsakalos G, Weil MS, Haakenstad A, Mokdad A, Murray CJL, Dieleman JL. Varied health spending growth across US states associated with income, hospitals, and insurance market concentration. *Health Affairs*. 2022.
+:::
+
+::: {.cv-publication}
+Roberts NSL, **Johnson EK**, Zheng SM, Hamilton E, Abdoli A, et al. Global mortality of snakebite envenoming between 1990 and 2019. *Nature Communications*. 2022.
+:::
+
+::: {.cv-publication}
+**Johnson EK**, Sylte D, Chaves SS, Li Y, Mahe C, Nair H, Paget J, van Pomeren T, Shi T, Viboud C, James SL. Hospital utilization rates for influenza and RSV: a novel approach and critical assessment. *Population Health Metrics*. 2021.
+:::
+
+::: {.cv-publication}
+Li Y, **Johnson EK**, Shi T, Campbell H, Chaves SS, Commaille-Chapus C, Dighero I, James SL, Mahe C, Ooi Y, Paget J, van Pomeren T, Viboud C, Nair H. National burden estimates of hospitalisations for acute lower respiratory infections due to respiratory syncytial virus in young children in 2019 among 58 countries: a modelling study. *The Lancet Respiratory Medicine*. 2020.
+:::
+
+### Works in progress
+
+::: {.cv-publication}
+**Johnson EK**, Parikh H, Ettman C, Ge G, Sopina L, Chang AY. The lasting income costs of illness: a Danish register study of mental and physical disorders. Manuscript under review.
+:::
+
+### Other Media
+
+::: {.cv-publication}
+Chang AY, **Johnson EK**. Confronting the systematic invisibility of women's health. *The Lancet Obstetrics, Gynaecology, & Women's Health* (commentary). 2025.
+:::
+
+::: {.cv-publication}
+**Johnson EK**, Dieleman JL. Standardizing State Health Spending. *Health Affairs Forefront* (blog post). 2022.
+:::
+
+## Research Experience {.cv-section}
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Southern Denmark, Danish Center for Health Economics**]{.cv-institution}
+[Odense, DK]{.cv-location}
+:::
+::: {.cv-position}
+[*Graduate student – Experienced Burden of Disease Project*]{.cv-title}
+[2023 - Present]{.cv-dates}
+:::
+
+- Measuring the economic, social, and health loss attributable to breast cancer, stroke, alcohol use disorder and depression over an 18-year period in Denmark using administrative health, education, and economic data.
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Southern Denmark, Danish Center for Health Economics**]{.cv-institution}
+[Odense, DK]{.cv-location}
+:::
+::: {.cv-position}
+[*Graduate student – Predicting Early Mortality Project*]{.cv-title}
+[2023 – Present]{.cv-dates}
+:::
+
+- Identifying and describing individuals who dies early in Denmark using machine learning and decomposition methods and over 2000 individual-level health, economic, demographic and social characteristics.
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Southern Denmark, Danish Center for Health Economics**]{.cv-institution}
+[Odense, DK]{.cv-location}
+:::
+::: {.cv-position}
+[*Contributor – International Network on Comparative Resource Use*]{.cv-title}
+[2024 – Present]{.cv-dates}
+:::
+
+- Comparing hospital resource use by disease, age, sex, and comorbidity status in Denmark to 16 other high-income countries globally in collaboration with the University of Oxford and Institute of Health Metrics and Evaluation.
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Washington, Institute for Health Metrics and Evaluation**]{.cv-institution}
+[Seattle, WA]{.cv-location}
+:::
+::: {.cv-position}
+[*Research Scientist I – US Disease Expenditure Project*]{.cv-title}
+[2021 - 2023]{.cv-dates}
+:::
+
+- Estimated US county and state-level disease-specific health expenditure by payer and type of care from 2000-2019, using billions of rows of administrative data and econometric and small area estimation methods.
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Washington, Institute for Health Metrics and Evaluation**]{.cv-institution}
+[Seattle, WA]{.cv-location}
+:::
+::: {.cv-position}
+[*Research Scientist I – Global Burden of Disease (GBD), Clinical Informatics*]{.cv-title}
+[2019-2021]{.cv-dates}
+:::
+
+- Estimated incidence and prevalence of disease through Bayesian mixed effects modeling for 85 diseases and injuries using hospital administrative data from over 30 countries. Modeled outputs are a key input to Global Burden of Disease morbidity modeling.
+:::
+
+## Conference Presentations {.cv-section}
+
+::: {.cv-entry}
+Johnson EK, Parikh H, Ettman C, Ge G, Sopina L, Chang AY. *Lasting Income Costs of Illness: a Danish Register Study of Mental and Physical Disorders.*
+
+::: {.cv-venues}
+- Årsmøde i Dansk Selskabe i Sundhedsøkonomi, Odense DK. September 2025. Oral presentation.
+- European Health Economics PhD Conference, Brussels BE. September 2025. Oral presentation.
+- Nordic Health Economics Study Group, Oslo NO. August 2025. Oral presentation.
+- International Health Economics Association Congress, Bali ID. July 2025. Oral presentation.
+:::
+:::
+
+::: {.cv-entry}
+Johnson EK, Parikh H, Sopina L, Olsen KR, Chang AY. *Economic Burden of Breast Cancer in Denmark: Longitudinal Estimates and Heterogeneous Effects.*
+
+::: {.cv-venues}
+- International Health Economics Association Congress, Bali ID. July 2025. Oral presentation.
+- Nordic Epidemiology Conference, Copenhagen DK. May 2025. Oral presentation.
+:::
+:::
+
+::: {.cv-entry}
+Johnson EK, Wojtesta M, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu M, Thomson A, Tsakalos G, Weil MS, Haakenstad A, Mokdad A, Murray CJL, Dieleman JL. *Variation in US State Health Spending Grows and Is Associated with Income, Health System Capacity, Insurance Coverage and Market Concentration.*
+
+::: {.cv-venues}
+- American Society of Health Economists Conference, Austin US. June 2022. Oral presentation.
+:::
+:::
+
+## Teaching Experience {.cv-section}
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**University of Southern Denmark**]{.cv-institution}
+[Esbjerg, DK]{.cv-location}
+:::
+::: {.cv-position}
+[*Lecturer, examiner, and course administrator – Global Health Policy Graduate Course*]{.cv-title}
+[Spring 2024]{.cv-dates}
+:::
+::: {.cv-position}
+[*MSc. thesis supervision – MSc. Data Science, 4 students*]{.cv-title}
+[Spring 2024, 2025]{.cv-dates}
+:::
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**Rice University**]{.cv-institution}
+[Houston, TX]{.cv-location}
+:::
+::: {.cv-position}
+[*Teaching assistant – Global Health Technology Undergraduate Course*]{.cv-title}
+[Spring 2017]{.cv-dates}
+:::
+::: {.cv-position}
+[*Teaching assistant – Probability and Statistics Undergraduate Course*]{.cv-title}
+[Fall 2016]{.cv-dates}
+:::
+:::
+
+## Other Professional Experience {.cv-section}
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**Epic Systems Corporation**]{.cv-institution}
+[Madison, WI]{.cv-location}
+:::
+::: {.cv-position}
+[*Technical Services Manager*]{.cv-title}
+[2018 – 2019]{.cv-dates}
+:::
+
+- Supervised technical services analysts on the Healthy Planet value-based care and risk management application. Conducted performance evaluations, assigned customer projects, and coached new hires in technical skills.
+:::
+
+::: {.cv-entry}
+::: {.cv-entry-header}
+[**Epic Systems Corporation**]{.cv-institution}
+[Madison, WI]{.cv-location}
+:::
+::: {.cv-position}
+[*Technical Services Analyst*]{.cv-title}
+[2017 – 2018]{.cv-dates}
+:::
+
+- Managed project to integrate claims data sent from payer contracts into the Epic data warehouse and patient medical records for clinical decision-making. Improved quality of care metrics by 35% with additional data.
+- Supported an implementation of Epic software for a value-based care management and pediatric diabetes initiative in California. Built and tested tools for reporting, patient tracking, and care planning used by 53 care managers and health coaches, who enrolled 5000 new patients.
+:::
+
+## Skills {.cv-section}
+
+::: {.cv-skills}
+- 8 years experience in R (data.table, dplyr, arrow, ggplot, plotly), 6 in Python (pandas, seaborn, matplotlib, arrow), and 3 in SQL.
+- Experienced with Github, repository management, and version control.
+- Experienced with parquet, Spark, Arrow, distributed and cluster-based computation, and management of big data on the scale of billions of rows and tens of terabytes of memory.
+- Conversant in French, Spanish and Danish.
+:::
