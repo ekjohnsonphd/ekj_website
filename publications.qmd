@@ -7,7 +7,6 @@ nocite: '@*'
 
 ```{=html}
 <style>
-/* Publication statistics styling - compact version */
 .pub-stats {
   margin-bottom: 2em;
   padding-bottom: 1em;
@@ -37,7 +36,6 @@ nocite: '@*'
   color: #666;
 }
 
-/* Enhanced publication list styling */
 .references {
   margin-left: 0;
   padding-left: 0;
@@ -54,20 +52,17 @@ nocite: '@*'
   border-bottom: none;
 }
 
-/* Make journal names stand out */
 .references .csl-entry em {
   font-style: italic;
   color: #2c5282;
   font-weight: 500;
 }
 
-/* Bold author name - will be done via JavaScript */
 .references .csl-entry strong {
   color: #000;
   font-weight: 700;
 }
 
-/* Year and volume styling */
 .references .csl-entry a {
   color: #2563eb;
   text-decoration: none;
@@ -82,7 +77,7 @@ nocite: '@*'
 ::: {.pub-stats}
 ::: {.stat-grid}
 <div class="stat-item">
-<span class="stat-number">14</span>
+<span class="stat-number">13</span>
 <span class="stat-label">publications</span>
 </div>
 
@@ -104,7 +99,6 @@ nocite: '@*'
 ```{=html}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Bold author name (Johnson, E. K.) in bibliography
   const refs = document.getElementById('refs');
   if (refs) {
     refs.innerHTML = refs.innerHTML
