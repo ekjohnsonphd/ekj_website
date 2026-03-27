@@ -128,6 +128,22 @@ other_experience:
           - "Managed project to integrate claims data sent from payer contracts into the Epic data warehouse and patient medical records for clinical decision-making. Improved quality of care metrics by 35% with additional data."
           - "Supported an implementation of Epic software for a value-based care management and pediatric diabetes initiative in California. Built and tested tools for reporting, patient tracking, and care planning used by 53 care managers and health coaches, who enrolled 5000 new patients."
 
+pub_stats:
+  h_index: 9
+
+# Optional: if present, only these bib keys appear in the CV publication section.
+# The full publication list (publist.qmd) always shows all publications.
+cv_publications:
+  peer-reviewed:
+    - johnson2025BreastCancer
+    - johnson2026LastingIncome
+    - chang2025SexDifferences
+  in-progress:
+    - johnson2026ParentFormation
+    - johnson2026EarlyMortality
+  other-media:
+    - chang2025ConfrontingSystematic
+
 skills:
   - "8 years experience in R (data.table, dplyr, arrow, ggplot, plotly), 6 in Python (pandas, seaborn, matplotlib, arrow), and 3 in SQL."
   - "Experienced with Github, repository management, and version control."

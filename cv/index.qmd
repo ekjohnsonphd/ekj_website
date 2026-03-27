@@ -107,7 +107,7 @@ Graduate student and population health researcher with over 7 years of experienc
 *All authors listed from first to last*
 
 ::: {.cv-publication}
-Dieleman JL, Beauchamp M, Crosby SW, DeJarnatt D, **Johnson EK**, et al. Tracking US Health Care Spending by Health Condition and County. *JAMA*. 2025.
+**Johnson EK**, Parikh H, Ettman CK, Ge G, Sopina L, Chang AY. Lasting Income Costs of Mental and Physical Illness. *JAMA Health Forum*. 2026.
 :::
 
 ::: {.cv-publication}
@@ -115,63 +115,23 @@ Dieleman JL, Beauchamp M, Crosby SW, DeJarnatt D, **Johnson EK**, et al. Trackin
 :::
 
 ::: {.cv-publication}
-Lescinsky H, Sahu M, Beauchamp M, Crosby S, **Johnson EK**, McHugh TA, Scott JW, Schulman K, Thomson A, Weil M, Dieleman JL, Milstein A. Exploring State-Level Change in Health Care Value Over Three Decades in the United States, 1991--2020. *Health Services Research*. 2025.
-:::
-
-::: {.cv-publication}
 Chang AY, **Johnson EK**, Bolongaita S, Buse K, Hawkes SJ, Karlsson O, Knaul FM, Kruk ME, Norheim OF, Ogbuoji O, Watkins D, Jamison DT. From Sex Differences to Sex Inequalities in Life Expectancy: A Cross-Country Observational Benchmarking Analysis. *PLoS medicine*. 2025.
-:::
-
-::: {.cv-publication}
-Aagaard A, Rottger R, **Johnson EK**, Olsen KR. Comparing the Predictive Performance of Diabetes Complications Using Administrative Health Data and Clinical Data. *Scientific Reports*. 2025.
-:::
-
-::: {.cv-publication}
-Norheim OF, Chang AY, Bolongaita S, Barraza-Llorens M, Fawole A, et al. Halving Premature Death and Improving Quality of Life at All Ages: Cross-Country Analyses of Past Trends and Future Directions. *The Lancet*. 2024.
-:::
-
-::: {.cv-publication}
-GBD US Health Collaborators. The Burden of Diseases, Injuries, and Risk Factors by State in the USA, 1990--2021: A Systematic Analysis for the Global Burden of Disease Study 2021. *The Lancet*. 2024.
-:::
-
-::: {.cv-publication}
-GBD Nonfatal Collaborators. Global Incidence, Prevalence, Years Lived with Disability (YLDs), Disability-Adjusted Life-Years (DALYs), and Healthy Life Expectancy (HALE) for 371 Diseases and Injuries in 204 Countries and Territories and 811 Subnational Locations, 1990--2021: A Systematic Analysis for the Global Burden of Disease Study 2021. *The Lancet*. 2024.
-:::
-
-::: {.cv-publication}
-Paget J, Staadegaard L, Wang X, Li Y, van Pomeren T, van Summeren J, Duckers M, Chaves SS, **Johnson EK**, Mahe C, Nair H, Viboud C, Spreeuwenberg P. Global and National Influenza-Associated Hospitalisation Rates: Estimates for 40 Countries and Administrative Regions. *Journal of Global Health*. 2023.
-:::
-
-::: {.cv-publication}
-**Johnson EK**, Wojtesta MA, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu M, Thomson A, Tsakalos G, Weil MS, Haakenstad A, Mokdad AH, Murray CJL, Dieleman JL. Varied Health Spending Growth Across US States Was Associated With Incomes, Price Levels, And Medicaid Expansion, 2000--19. *Health Affairs*. 2022.
-:::
-
-::: {.cv-publication}
-Roberts NLS, **Johnson EK**, Zeng SM, Hamilton EB, Abdoli A, et al. Global Mortality of Snakebite Envenoming between 1990 and 2019. *Nature Communications*. 2022.
-:::
-
-::: {.cv-publication}
-**Johnson EK**, Sylte D, Chaves SS, Li Y, Mahe C, Nair H, Paget J, van Pomeren T, Shi T, Viboud C, James SL. Hospital Utilization Rates for Influenza and RSV: A Novel Approach and Critical Assessment. *Population Health Metrics*. 2021.
-:::
-
-::: {.cv-publication}
-Li Y, **Johnson EK**, Shi T, Campbell H, Chaves SS, Commaille-Chapus C, Dighero I, James SL, Mahe C, Ooi Y, Paget J, van Pomeren T, Viboud C, Nair H. National Burden Estimates of Hospitalisations for Acute Lower Respiratory Infections Due to Respiratory Syncytial Virus in Young Children in 2019 among 58 Countries: A Modelling Study. *The Lancet Respiratory Medicine*. 2021.
 :::
 
 ### Works in progress
 
 ::: {.cv-publication}
-**Johnson EK**, Parikh H, Ettman C, Ge G, Sopina L, Chang AY. The Lasting Income Costs of Illness: A Danish Register Study of Mental and Physical Disorders. Manuscript under review.
+**Johnson EK**, Parikh H, Ettman C, Ge G, Sopina L, Chang AY. Hospital Diagnosed Disease and Family Formation: Evidence from Danish Register Data. In preparation.
+:::
+
+::: {.cv-publication}
+**Johnson EK**, Lindberg A, Marin AO, Riumano Herl C, Baravelli CM, Chang AY, Emmanuel E. Who dies early? Predicting and Describing Premature Mortality using Danish Register Data. In preparation.
 :::
 
 ### Other Media
 
 ::: {.cv-publication}
 Chang AY, **Johnson EK**. Confronting the Systematic Invisibility of Women's Health. *The Lancet Obstetrics, Gynaecology, & Women's Health* (commentary). 2025.
-:::
-
-::: {.cv-publication}
-**Johnson EK**, Dieleman JL. Standardizing State Health Spending. *Health Affairs Forefront* (blog post). 2022.
 :::
 
 ## Research Experience {.cv-section}
@@ -187,26 +147,12 @@ Chang AY, **Johnson EK**. Confronting the Systematic Invisibility of Women's Hea
 :::
 
 - Measuring the economic, social, and health loss attributable to breast cancer, stroke, alcohol use disorder and depression over an 18-year period in Denmark using administrative health, education, and economic data.
-:::
-
-::: {.cv-entry}
-::: {.cv-entry-header}
-[**University of Southern Denmark, Danish Center for Health Economics**]{.cv-institution}
-[Odense, DK]{.cv-location}
-:::
 ::: {.cv-position}
 [*Graduate student – Predicting Early Mortality Project*]{.cv-title}
 [2023 – Present]{.cv-dates}
 :::
 
 - Identifying and describing individuals who dies early in Denmark using machine learning and decomposition methods and over 2000 individual-level health, economic, demographic and social characteristics.
-:::
-
-::: {.cv-entry}
-::: {.cv-entry-header}
-[**University of Southern Denmark, Danish Center for Health Economics**]{.cv-institution}
-[Odense, DK]{.cv-location}
-:::
 ::: {.cv-position}
 [*Contributor – International Network on Comparative Resource Use*]{.cv-title}
 [2024 – Present]{.cv-dates}
@@ -226,13 +172,6 @@ Chang AY, **Johnson EK**. Confronting the Systematic Invisibility of Women's Hea
 :::
 
 - Estimated US county and state-level disease-specific health expenditure by payer and type of care from 2000-2019, using billions of rows of administrative data and econometric and small area estimation methods.
-:::
-
-::: {.cv-entry}
-::: {.cv-entry-header}
-[**University of Washington, Institute for Health Metrics and Evaluation**]{.cv-institution}
-[Seattle, WA]{.cv-location}
-:::
 ::: {.cv-position}
 [*Research Scientist I – Global Burden of Disease (GBD), Clinical Informatics*]{.cv-title}
 [2019-2021]{.cv-dates}
@@ -282,13 +221,6 @@ Johnson EK, Wojtesta M, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu 
 [*Lecturer, examiner, and course administrator – Global Health Policy Graduate Course*]{.cv-title}
 [Spring 2024]{.cv-dates}
 :::
-:::
-
-::: {.cv-entry}
-::: {.cv-entry-header}
-[**University of Southern Denmark**]{.cv-institution}
-[Esbjerg, DK]{.cv-location}
-:::
 ::: {.cv-position}
 [*MSc. thesis supervision – MSc. Data Science, 4 students*]{.cv-title}
 [Spring 2024, 2025]{.cv-dates}
@@ -303,13 +235,6 @@ Johnson EK, Wojtesta M, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu 
 ::: {.cv-position}
 [*Teaching assistant – Global Health Technology Undergraduate Course*]{.cv-title}
 [Spring 2017]{.cv-dates}
-:::
-:::
-
-::: {.cv-entry}
-::: {.cv-entry-header}
-[**Rice University**]{.cv-institution}
-[Houston, TX]{.cv-location}
 :::
 ::: {.cv-position}
 [*Teaching assistant – Probability and Statistics Undergraduate Course*]{.cv-title}
@@ -330,13 +255,6 @@ Johnson EK, Wojtesta M, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu 
 :::
 
 - Supervised technical services analysts on the Healthy Planet value-based care and risk management application. Conducted performance evaluations, assigned customer projects, and coached new hires in technical skills.
-:::
-
-::: {.cv-entry}
-::: {.cv-entry-header}
-[**Epic Systems Corporation**]{.cv-institution}
-[Madison, WI]{.cv-location}
-:::
 ::: {.cv-position}
 [*Technical Services Analyst*]{.cv-title}
 [2017 – 2018]{.cv-dates}

@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ekjohnson.com/publications.html</loc>
-    <lastmod>2026-02-16T17:09:23.528Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ekjohnson.com/research.html</loc>
-    <lastmod>2025-11-28T09:53:43.437Z</lastmod>
+    <loc>https://ekjohnson.com/ai.html</loc>
+    <lastmod>2026-02-26T17:56:29.294Z</lastmod>
   </url>
   <url>
     <loc>https://ekjohnson.com/index.html</loc>
     <lastmod>2026-02-15T21:51:18.370Z</lastmod>
   </url>
   <url>
+    <loc>https://ekjohnson.com/research.html</loc>
+    <lastmod>2025-11-28T09:53:43.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ekjohnson.com/publications.html</loc>
+    <lastmod>2026-03-27T17:28:10.870Z</lastmod>
+  </url>
+  <url>
     <loc>https://ekjohnson.com/cv/index.html</loc>
-    <lastmod>2026-02-16T17:09:23.530Z</lastmod>
+    <lastmod>2026-03-27T17:28:10.872Z</lastmod>
   </url>
 </urlset>
