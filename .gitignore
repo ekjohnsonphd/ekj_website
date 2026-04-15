@@ -9,6 +9,8 @@
 **/*.jpeg
 !_assets/**/*.jpg
 !_assets/**/*.jpeg
+!docs/_assets/**/*.jpg
+!docs/_assets/**/*.jpeg
 **/*.pdf
 !cv/**/*.pdf
 !docs/cv/**/*.pdf
