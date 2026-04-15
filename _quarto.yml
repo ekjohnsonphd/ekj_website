@@ -4,6 +4,7 @@ project:
   pre-render: python3 build-site.py
   resources:
     - CNAME
+    - .nojekyll
 
 # Meta
 description-meta: "Emily K. Johnson Professional Website"
