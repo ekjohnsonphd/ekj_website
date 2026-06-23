@@ -1,0 +1,268 @@
+---
+title: ""
+format:
+  typst:
+    margin:
+      x: "0.85in"
+      y: "0.55in"
+    fontsize: 10pt
+    mainfont: "Libertinus Serif"
+    sansfont: "Libertinus Sans"
+bibliography: []
+citeproc: false
+---
+
+```{=typst}
+#set page(numbering: "1")
+#set par(justify: true, leading: 0.57em)
+#set text(size: 10pt)
+#set list(spacing: 0.45em)
+
+// Section heading style
+#show heading.where(level: 1): it => {
+  set text(size: 11pt, weight: "bold")
+  v(0.35em)
+  upper(text(tracking: 0.1em, it.body))
+  v(-0.2em)
+  line(length: 100%, stroke: 0.5pt)
+  v(0.2em)
+}
+
+#show heading.where(level: 2): it => {
+  set text(size: 10pt, weight: "bold")
+  v(0.2em)
+  it.body
+  v(0.05em)
+}
+
+#align(center)[
+  #text(size: 20pt, weight: "bold")[Emily K. Johnson]
+  \
+  #link("https://www.linkedin.com/in/emilykatherinejohnson/")[Linkedin]
+  | #link("https://www.researchgate.net/profile/Emily-Johnson-107")[ResearchGate]
+]
+```
+
+# Education
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*University of Southern Denmark*], [Odense, DK,]
+)
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Doctor of Philosophy in Health Economics_], [Expected 2026]
+)
+```
+
+- Affiliations: Danish Center for Health Economics, Danish Institute for Advanced Study
+- Supervised by Angela Chang, DSc, Liza Sopina, PhD, and Harsh Parikh, PhD
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*Johns Hopkins University*], [Baltimore, MD, USA,]
+)
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Visiting Graduate Student_], [January 2026 – April 2026]
+)
+```
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*London School of Economics*], [London, UK,  Level: Distinction]
+)
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Master of Science in Health Data Science_], [July 2023]
+)
+```
+
+- *Prize for Excellence in MSc Health Data Science* – Highest Average 2022/23
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*University of Edinburgh*], [Edinburgh, UK,]
+)
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Postgraduate Certificate in Epidemiology_], [September 2023]
+)
+```
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*Rice University*], [Houston, TX, USA,  GPA: 3.52]
+)
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Bachelor of Arts in Statistics, Minor in Global Health Technologies_], [May 2017]
+)
+```
+
+# Publications
+
+*\* denotes primary author*
+
+## Peer-reviewed articles
+
+\* **Johnson EK**, Parikh H, Ettman CK, Ge G, Sopina L, Chang AY. Lasting Income Costs of Mental and Physical Illness. *JAMA Health Forum*. 2026;7(3):e260196.
+
+\* **Johnson EK**, Parikh H, Olsen KR, Chang AY, Sopina L. Breast Cancer and Income Loss in Denmark: Heterogeneous Outcomes and Longitudinal Effects. *Nature Communications*. 2025.
+
+Chang AY, **Johnson EK**, Bolongaita S, Buse K, Hawkes SJ, Karlsson O, Knaul FM, Kruk ME, Norheim OF, Ogbuoji O, Watkins D, Jamison DT. From Sex Differences to Sex Inequalities in Life Expectancy: A Cross-Country Observational Benchmarking Analysis. *PLoS Medicine*. 2025;22(12):e1004828.
+
+Lescinsky H, Sahu M, Beauchamp M, Crosby S, **Johnson EK**, McHugh TA, Scott JW, Schulman K, Thomson A, Weil M, Dieleman JL, Milstein A. Exploring State-Level Change in Health Care Value Over Three Decades in the United States, 1991–2020. *Health Services Research*. 2025;e70054.
+
+Aagaard A, Röttger R, **Johnson EK**, Olsen KR. Comparing the Predictive Performance of Diabetes Complications Using Administrative Health Data and Clinical Data. *Scientific Reports*. 2025;15(1):33035.
+
+Dieleman JL, Beauchamp M, Crosby SW, DeJarnatt D, **Johnson EK**, Lescinsky H, et al. Tracking US Health Care Spending by Health Condition and County. *JAMA*. 2025.
+
+Norheim OF, Chang AY, Bolongaita S, **Johnson EK**, et al. Halving Premature Death and Improving Quality of Life at All Ages: Cross-Country Analyses of Past Trends and Future Directions. *The Lancet*. 2024.
+
+GBD US Health Collaborators. The Burden of Diseases, Injuries, and Risk Factors by State in the USA, 1990–2021. *The Lancet*. 2024;404(10470):2318–2340.
+
+GBD Nonfatal Collaborators. Global Incidence, Prevalence, YLDs, DALYs, and HALE for 371 Diseases and Injuries, 1990–2021. *The Lancet*. 2024;404(10459):1135–1207.
+
+Paget J, Staadegaard L, Wang X, Li Y, van Pomeren T, van Summeren J, Dückers M, Chaves SS, **Johnson EK**, et al. Global and National Influenza-Associated Hospitalisation Rates: Estimates for 40 Countries and Administrative Regions. *Journal of Global Health*. 2023;13:04003.
+
+Roberts NLS, **Johnson EK**, Zeng SM, et al. Global Mortality of Snakebite Envenoming between 1990 and 2019. *Nature Communications*. 2022;13(1):6160.
+
+\* **Johnson EK**, Wojtesta MA, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu M, Thomson A, Tsakalos G, Weil MS, Haakenstad A, Mokdad AH, Murray CJL, Dieleman JL. Varied Health Spending Growth Across US States Was Associated With Incomes, Price Levels, And Medicaid Expansion, 2000–19. *Health Affairs*. 2022;41(8):1088–1097.
+
+\* **Johnson EK**, Sylte D, Chaves SS, Li Y, Mahe C, Nair H, Paget J, van Pomeren T, Shi T, Viboud C, James SL. Hospital Utilization Rates for Influenza and RSV: A Novel Approach and Critical Assessment. *Population Health Metrics*. 2021;19(1):31.
+
+Li Y, **Johnson EK**, Shi T, Campbell H, Chaves SS, et al. National Burden Estimates of Hospitalisations for Acute Lower Respiratory Infections Due to RSV in Young Children in 2019 among 58 Countries. *The Lancet Respiratory Medicine*. 2021;9(2):175–185.
+
+## Working papers
+
+\* **Johnson EK**, Parikh H, Ettman C, Ge G, Sopina L, Chang AY. Hospital Diagnosed Disease and Family Formation: Evidence from Danish Register Data. In preparation.
+
+\* **Johnson EK**, Lindberg A, Marin AOK, Riumano Herl C, Baravelli CM, Chang AY, Emmanuel E. Who Dies Early? Predicting and Describing Premature Mortality using Danish Register Data. In preparation.
+
+## Other media
+
+Chang AY, **Johnson EK**. Confronting the Systematic Invisibility of Women's Health. *The Lancet Obstetrics, Gynaecology, & Women's Health* (commentary). 2025;1(2):e76–e77.
+
+\* **Johnson EK**, Dieleman JL. Standardizing State Health Spending. *Health Affairs Forefront*. 2022.
+
+# Research Experience
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*University of Southern Denmark, Danish Center for Health Economics*], [Odense, DK]
+)
+```
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Graduate student – Experienced Burden of Disease Project_], [2023 - Present]
+)
+```
+
+- Measuring the economic, social, and health loss attributable to breast cancer, stroke, alcohol use disorder and depression over an 18-year period in Denmark using administrative health, education, and economic data.
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Graduate student – Predicting Early Mortality Project_], [2023 – Present]
+)
+```
+
+- Identifying and describing individuals who dies early in Denmark using machine learning and decomposition methods and over 2000 individual-level health, economic, demographic and social characteristics.
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Contributor – International Network on Comparative Resource Use_], [2024 – Present]
+)
+```
+
+- Comparing hospital resource use by disease, age, sex, and comorbidity status in Denmark to 16 other high-income countries globally in collaboration with the University of Oxford and Institute of Health Metrics and Evaluation.
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*University of Washington, Institute for Health Metrics and Evaluation*], [Seattle, WA]
+)
+```
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Research Scientist I – US Disease Expenditure Project_], [2021 - 2023]
+)
+```
+
+- Estimated US county and state-level disease-specific health expenditure by payer and type of care from 2000-2019, using billions of rows of administrative data and econometric and small area estimation methods.
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Research Scientist I – Global Burden of Disease (GBD), Clinical Informatics_], [2019-2021]
+)
+```
+
+- Estimated incidence and prevalence of disease through Bayesian mixed effects modeling for 85 diseases and injuries using hospital administrative data from over 30 countries. Modeled outputs are a key input to Global Burden of Disease morbidity modeling.
+
+# Conference Presentations
+
+Johnson EK, Parikh H, Ettman C, Ge G, Sopina L, Chang AY. *Lasting Income Costs of Illness: a Danish Register Study of Mental and Physical Disorders.*
+
+- Årsmøde i Dansk Selskabe i Sundhedsøkonomi, Odense DK. September 2025. Oral presentation.
+- European Health Economics PhD Conference, Brussels BE. September 2025. Oral presentation.
+- Nordic Health Economics Study Group, Oslo NO. August 2025. Oral presentation.
+- International Health Economics Association Congress, Bali ID. July 2025. Oral presentation.
+
+Johnson EK, Parikh H, Sopina L, Olsen KR, Chang AY. *Economic Burden of Breast Cancer in Denmark: Longitudinal Estimates and Heterogeneous Effects.*
+
+- International Health Economics Association Congress, Bali ID. July 2025. Oral presentation.
+- Nordic Epidemiology Conference, Copenhagen DK. May 2025. Oral presentation.
+
+Johnson EK, Wojtesta M, Crosby SW, Duber HC, Jun E, Lescinsky H, Nguyen P, Sahu M, Thomson A, Tsakalos G, Weil MS, Haakenstad A, Mokdad A, Murray CJL, Dieleman JL. *Variation in US State Health Spending Grows and Is Associated with Income, Health System Capacity, Insurance Coverage and Market Concentration.*
+
+- American Society of Health Economists Conference, Austin US. June 2022. Oral presentation.
+
+# Teaching Experience
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*University of Southern Denmark*], [Esbjerg, DK]
+)
+```
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Lecturer, examiner, and course administrator – Global Health Policy Graduate Course_], [Spring 2024]
+)
+```
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_MSc. thesis supervision – MSc. Data Science, 4 students_], [Spring 2024, 2025]
+)
+```
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*Rice University*], [Houston, TX]
+)
+```
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Teaching assistant – Global Health Technology Undergraduate Course_], [Spring 2017]
+)
+```
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Teaching assistant – Probability and Statistics Undergraduate Course_], [Fall 2016]
+)
+```
+
+# Other Professional Experience
+
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [*Epic Systems Corporation*], [Madison, WI]
+)
+```
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Technical Services Manager_], [2018 – 2019]
+)
+```
+```{=typst}
+#grid(columns: (1fr, auto), align: (left, right),
+  [_Technical Services Analyst_], [2017 – 2018]
+)
+```
+
+# Skills
+
+- 8 years experience in R (data.table, dplyr, arrow, ggplot, plotly), 6 in Python (pandas, seaborn, matplotlib, arrow), and 3 in SQL.
+- Familiar with Claude Code, Claude Cowork, Elicit, and agentic and multi-process AI workflows.
+- Experienced with parquet, Spark, Arrow, distributed and cluster-based computation, and management of big data on the scale of billions of rows and tens of terabytes of memory.
+- Conversant in Danish.
