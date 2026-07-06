@@ -74,3 +74,10 @@ cv/cv-pdf.qmd
 
 # Claude Code local config
 .claude/
+
+# WIP dashboard + private submission data (not for public repo)
+dashboard.qmd
+data/
+docs/dashboard.html
+docs/data/
+docs/site_libs/quarto-ojs/
