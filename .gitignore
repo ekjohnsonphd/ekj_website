@@ -71,3 +71,6 @@ publications.qmd
 cv/index.qmd
 cv/cv-pdf.qmd
 
+
+# Claude Code local config
+.claude/
