@@ -1,0 +1,54 @@
+---
+title: "Publications List"
+output: html_document
+---
+
+*An asterisk (\*) indicates primary (first) author.*
+
+## Peer-Reviewed Articles
+
+\* Johnson, E.K., Parikh, H., Ettman, C.K., Ge, G., Sopina, L., & Chang, A.Y. (2026). Lasting income costs of mental and physical illness. *JAMA Health Forum*, 7(3), e260196. https://doi.org/10.1001/jamahealthforum.2026.0196
+
+\* Johnson, E.K., Parikh, H., Olsen, K.R., Chang, A.Y., & Sopina, L. (2025). Breast cancer and income loss in Denmark: Heterogeneous outcomes and longitudinal effects. *Nature Communications*. https://doi.org/10.1038/s41467-025-66524-y
+
+Chang, A.Y. & Johnson, E.K. (2025). Confronting the systematic invisibility of women's health. *The Lancet Obstetrics, Gynaecology, & Women's Health*, 1(2), e76–e77. https://doi.org/10.1016/j.lanogw.2025.100055
+
+Chang, A.Y., Johnson, E.K., Bolongaita, S., Buse, K., Hawkes, S.J., Karlsson, O., Knaul, F.M., Kruk, M.E., Norheim, O.F., Ogbuoji, O., Watkins, D., & Jamison, D.T. (2025). From sex differences to sex inequalities in life expectancy: A cross-country observational benchmarking analysis. *PLoS Medicine*, 22(12), e1004828. https://doi.org/10.1371/journal.pmed.1004828
+
+Lescinsky, H., Sahu, M., Beauchamp, M., Crosby, S., Johnson, E.K., McHugh, T.A., Scott, J.W., Schulman, K., Thomson, A., Weil, M., Dieleman, J.L., & Milstein, A. (2025). Exploring state-level change in health care value over three decades in the United States, 1991–2020. *Health Services Research*, e70054. https://doi.org/10.1111/1475-6773.70054
+
+Aagaard, A., Röttger, R., Johnson, E.K., & Olsen, K.R. (2025). Comparing the predictive performance of diabetes complications using administrative health data and clinical data. *Scientific Reports*, 15(1), 33035. https://doi.org/10.1038/s41598-025-18079-7
+
+Dieleman, J.L., Beauchamp, M., Crosby, S.W., DeJarnatt, D., Johnson, E.K., Lescinsky, H., et al. (2025). Tracking US health care spending by health condition and county. *JAMA*. https://doi.org/10.1001/jama.2024.26790
+
+Norheim, O.F., Chang, A.Y., Bolongaita, S., Johnson, E.K., et al. (2024). Halving premature death and improving quality of life at all ages: Cross-country analyses of past trends and future directions. *The Lancet*. https://doi.org/10.1016/S0140-6736(24)02417-6
+
+GBD US Health Collaborators. (2024). The burden of diseases, injuries, and risk factors by state in the USA, 1990–2021. *The Lancet*, 404(10470), 2318–2340. https://doi.org/10.1016/S0140-6736(24)01757-4
+
+GBD Nonfatal Collaborators. (2024). Global incidence, prevalence, YLDs, DALYs, and HALE for 371 diseases and injuries, 1990–2021. *The Lancet*, 404(10459), 1135–1207. https://doi.org/10.1016/S0140-6736(24)00757-8
+
+Paget, J., Staadegaard, L., Wang, X., Li, Y., van Pomeren, T., van Summeren, J., Dückers, M., Chaves, S.S., Johnson, E.K., et al. (2023). Global and national influenza-associated hospitalisation rates: Estimates for 40 countries and administrative regions. *Journal of Global Health*, 13, 04003. https://doi.org/10.7189/jogh.13.04003
+
+Roberts, N.L.S., Johnson, E.K., Zeng, S.M., et al. (2022). Global mortality of snakebite envenoming between 1990 and 2019. *Nature Communications*, 13(1), 6160. https://doi.org/10.1038/s41467-022-33627-9
+
+\* Johnson, E.K., Wojtesta, M.A., Crosby, S.W., Duber, H.C., Jun, E., Lescinsky, H., Nguyen, P., Sahu, M., Thomson, A., Tsakalos, G., Weil, M.S., Haakenstad, A., Mokdad, A.H., Murray, C.J.L., & Dieleman, J.L. (2022). Varied health spending growth across US states was associated with incomes, price levels, and Medicaid expansion, 2000–19. *Health Affairs*, 41(8), 1088–1097. https://doi.org/10.1377/hlthaff.2021.01834
+
+\* Johnson, E.K. & Dieleman, J.L. (2022). Standardizing state health spending. *Health Affairs Forefront*. https://www.healthaffairs.org/content/forefront/standardizing-state-health-spending
+
+\* Johnson, E.K., Sylte, D., Chaves, S.S., Li, Y., Mahe, C., Nair, H., Paget, J., van Pomeren, T., Shi, T., Viboud, C., & James, S.L. (2021). Hospital utilization rates for influenza and RSV: A novel approach and critical assessment. *Population Health Metrics*, 19(1), 31. https://doi.org/10.1186/s12963-021-00252-5
+
+Li, Y., Johnson, E.K., Shi, T., Campbell, H., Chaves, S.S., et al. (2021). National burden estimates of hospitalisations for acute lower respiratory infections due to RSV in young children in 2019 among 58 countries. *The Lancet Respiratory Medicine*, 9(2), 175–185. https://doi.org/10.1016/S2213-2600(20)30322-2
+
+## Working Papers
+
+\* Johnson, E.K., Parikh, H., Ettman, C., Ge, G., Sopina, L., & Chang, A.Y. (In preparation). Hospital diagnosed disease and family formation: Evidence from Danish register data.
+
+\* Johnson, E.K., Lindberg, A., Marin, A.O.K., Riumano Herl, C., Baravelli, C.M., Chang, A.Y., & Emmanuel, E. (In preparation). Who dies early? Predicting and describing premature mortality using Danish register data.
+
+## Conference Presentations
+
+\* Johnson, E.K., Chang, A., & Sopina, L. (2025). Illness and income: Quantifying long-term effects of 20 prevalent diseases in Denmark. *2025 World Congress on Health Economics*.
+
+Wieser, S., Chang, A.Y., Johnson, E.K., & Parikh, H. (2025). Pushing the boundaries of disease burden measurement: A DaCHE symposium. *2025 iHEA Congress*.
+
+\* Rosenkranz, E.K., Wojtesta, M., Crosby, S., Duber, H., Jun, E., Lescinsky, H., Nguyen, P., Sahu, M., Thomson, A., Tsakalos, G., Weil, M., Haakenstad, A., Mokdad, A., Murray, C.J.L., & Dieleman, J. (2022). Variation in US state health spending grows and is associated with income, health system capacity, insurance coverage and market concentration. *2022 ASHEcon Conference*.
