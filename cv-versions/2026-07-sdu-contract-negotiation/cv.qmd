@@ -40,8 +40,6 @@ citeproc: false
 #align(center)[
   #text(size: 20pt, weight: "bold")[Emily K. Johnson]
   \
-  #text(size: 10pt)[Health economist specializing in causal inference and register-based analysis of the long-term economic and health impacts of disease.]
-  \
   #link("https://www.linkedin.com/in/emilykatherinejohnson/")[LinkedIn]
   | #link("https://www.researchgate.net/profile/Emily-Johnson-107")[ResearchGate]
 ]
@@ -49,7 +47,7 @@ citeproc: false
 
 # Profile
 
-Health economist with 14 peer-reviewed publications, an h-index of 9 before PhD completion, and first-author papers in *Nature Communications*, *JAMA Health Forum*, *Health Affairs*, and *Population Health Metrics*. Seven years of professional research and industry experience predate the PhD, including four years as a Research Scientist at the Institute for Health Metrics and Evaluation and two at Epic Systems. Active collaborations span the University of Oxford, IHME, Johns Hopkins University, and Yale University, connecting Danish register research to leading US and UK groups.
+Health economist with 14 peer-reviewed publications, an h-index of 9 before PhD completion, and first-author papers in *Nature Communications*, *JAMA Health Forum*, *Health Affairs*, and *Population Health Metrics*. Trained as a statistician and health data scientist, with methods spanning register-based causal inference, machine learning, and Bayesian modeling of administrative data at the scale of billions of rows. Seven years of professional research and industry experience predate the PhD, including four years as a Research Scientist at the Institute for Health Metrics and Evaluation and two at Epic Systems. Active collaborations span the University of Oxford, IHME, Johns Hopkins University, and Yale University, connecting Danish register research to leading US and UK groups.
 
 # Research Experience
 
