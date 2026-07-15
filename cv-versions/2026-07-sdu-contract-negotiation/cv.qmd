@@ -49,7 +49,7 @@ citeproc: false
 
 # Profile
 
-Health economist with 14 peer-reviewed publications, an h-index of 9 before PhD completion, and first-author papers in *Nature Communications*, *JAMA Health Forum*, *Health Affairs*, and *Population Health Metrics*. Seven years of professional research and industry experience predate the PhD, including four years as a Research Scientist at the Institute for Health Metrics and Evaluation and two at Epic Systems. Active collaborations span the University of Oxford, IHME, and Johns Hopkins University, connecting Danish register research to leading US and UK groups.
+Health economist with 14 peer-reviewed publications, an h-index of 9 before PhD completion, and first-author papers in *Nature Communications*, *JAMA Health Forum*, *Health Affairs*, and *Population Health Metrics*. Seven years of professional research and industry experience predate the PhD, including four years as a Research Scientist at the Institute for Health Metrics and Evaluation and two at Epic Systems. Active collaborations span the University of Oxford, IHME, Johns Hopkins University, and Yale University, connecting Danish register research to leading US and UK groups.
 
 # Research Experience
 
