@@ -2,6 +2,12 @@ project:
   type: website
   output-dir: docs
   pre-render: python3 build-site.py
+  render:
+    - "*.qmd"
+    - "cv/*.qmd"
+    - "!claude-examples/"
+    - "!_email-version/"
+    - "!_drafts/"
   resources:
     - CNAME
     - .nojekyll

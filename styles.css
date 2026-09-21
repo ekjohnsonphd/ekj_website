@@ -1,9 +1,10 @@
-/* Deep teal palette - modern and gender-neutral */
+/* Forest green palette. Variable names kept (--deep-teal etc.) so the
+   rest of the sheet is untouched; values are now greens. */
 :root {
-  --deep-teal: #1A6B7C;
-  --teal: #3A8A9C;
-  --light-teal: #5A9BAD;
-  --cool-grey: #F0F4F5;
+  --deep-teal: #1B4332;   /* deep forest */
+  --teal: #2D6A4F;        /* forest */
+  --light-teal: #52796F;  /* muted sage */
+  --cool-grey: #F1F5F2;   /* pale sage grey */
   --slate: #374151;
   --charcoal: #1f2937;
   --light-gray: #f3f4f6;
@@ -188,6 +189,50 @@ body {
   display: block;
   margin-top: 0.25rem;
   font-size: 0.8125rem;
+}
+
+/* Education list with school logos (home page) */
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.edu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edu-item p {
+  margin: 0;
+}
+
+/* the wrapping <p> is the flex child; the img sits inside it */
+.edu-item > p:first-child {
+  flex: 0 0 64px;
+  width: 64px;
+  line-height: 0;
+}
+
+.edu-logo {
+  width: 64px;
+  height: 48px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.edu-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.edu-text strong {
+  margin-top: 0;
+}
+
+.edu-text em {
+  margin-top: 0.1rem;
 }
 
 /* Experience section with subtle header */

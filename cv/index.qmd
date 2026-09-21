@@ -23,7 +23,7 @@ format:
 ## Summary {.cv-section}
 
 ::: {.cv-summary}
-Graduate student and population health researcher with over 7 years of experience with administrative data, health metrics measurement, and data science and biostatistical methods. Published author in prominent health policy journals with substantive experience with big data and health systems knowledge. Seeking opportunities to contribute to the body of health policy research.
+Health economist and population health researcher with over 7 years of experience with administrative data, health metrics measurement, and data science and biostatistical methods. Published author in prominent health policy journals with substantive experience with big data and health systems knowledge. Seeking opportunities to contribute to the body of health policy research.
 :::
 
 ## Education {.cv-section}
@@ -35,7 +35,7 @@ Graduate student and population health researcher with over 7 years of experienc
 :::
 ::: {.cv-position}
 [*Doctor of Philosophy in Health Economics*]{.cv-title}
-[Expected 2026]{.cv-dates}
+[Expected September 2026]{.cv-dates}
 :::
 
 - Affiliations: Danish Center for Health Economics, Danish Institute for Advanced Study
@@ -111,11 +111,11 @@ Graduate student and population health researcher with over 7 years of experienc
 :::
 
 ::: {.cv-publication}
-**Johnson EK**, Parikh H, Olsen KR, Chang AY, Sopina L. Breast Cancer and Income Loss in Denmark: Heterogeneous Outcomes and Longitudinal Effects. *Nature Communications*. 2025.
+Chang AY, **Johnson EK**, Bolongaita S, Buse K, Hawkes SJ, Karlsson O, Knaul FM, Kruk ME, Norheim OF, Ogbuoji O, Watkins D, Jamison DT. From Sex Differences to Sex Inequalities in Life Expectancy: A Cross-Country Observational Benchmarking Analysis. *PLoS medicine*. 2025.
 :::
 
 ::: {.cv-publication}
-Chang AY, **Johnson EK**, Bolongaita S, Buse K, Hawkes SJ, Karlsson O, Knaul FM, Kruk ME, Norheim OF, Ogbuoji O, Watkins D, Jamison DT. From Sex Differences to Sex Inequalities in Life Expectancy: A Cross-Country Observational Benchmarking Analysis. *PLoS medicine*. 2025.
+**Johnson EK**, Parikh H, Olsen KR, Chang AY, Sopina L. Breast Cancer and Income Loss in Denmark: Heterogeneous Outcomes and Longitudinal Effects. *Nature Communications*. 2025.
 :::
 
 ### Works in progress
@@ -128,12 +128,6 @@ Chang AY, **Johnson EK**, Bolongaita S, Buse K, Hawkes SJ, Karlsson O, Knaul FM,
 **Johnson EK**, Lindberg A, Marin AO, Riumano Herl C, Baravelli CM, Chang AY, Emmanuel E. Who dies early? Predicting and Describing Premature Mortality using Danish Register Data. In preparation.
 :::
 
-### Other Media
-
-::: {.cv-publication}
-Chang AY, **Johnson EK**. Confronting the Systematic Invisibility of Women's Health. *The Lancet Obstetrics, Gynaecology, & Women's Health* (commentary). 2025.
-:::
-
 ## Research Experience {.cv-section}
 
 ::: {.cv-entry}
@@ -142,14 +136,18 @@ Chang AY, **Johnson EK**. Confronting the Systematic Invisibility of Women's Hea
 [Odense, DK]{.cv-location}
 :::
 ::: {.cv-position}
+[*Assistant Professor, Danish Centre for Health Economics; Visiting Fellow, Danish Institute for Advanced Study*]{.cv-title}
+[August 2026 – Present]{.cv-dates}
+:::
+::: {.cv-position}
 [*Graduate student – Experienced Burden of Disease Project*]{.cv-title}
-[2023 - Present]{.cv-dates}
+[2023 - 2026]{.cv-dates}
 :::
 
 - Measuring the economic, social, and health loss attributable to breast cancer, stroke, alcohol use disorder and depression over an 18-year period in Denmark using administrative health, education, and economic data.
 ::: {.cv-position}
 [*Graduate student – Predicting Early Mortality Project*]{.cv-title}
-[2023 – Present]{.cv-dates}
+[2023 – 2026]{.cv-dates}
 :::
 
 - Identifying and describing individuals who dies early in Denmark using machine learning and decomposition methods and over 2000 individual-level health, economic, demographic and social characteristics.

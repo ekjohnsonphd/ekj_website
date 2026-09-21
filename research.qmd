@@ -17,6 +17,13 @@ My areas of focus include:
 ## Current Projects
 
 ::: {.project-card}
+**MOHEAD**
+
+<!-- TODO (Emily): replace this placeholder. Suggested content: what MOHEAD stands for, its aim, funder, collaborating institutions, and your role. -->
+Placeholder — project description coming soon.
+:::
+
+::: {.project-card}
 **Experienced Burden of Disease in Denmark**
 
 This is the focus of my PhD dissertation, which is funded by Danmarks Frie Forskningfond and Helsefonden. The project aims to measure the economic, social, and psychological consequences of disease burden in Denmark using register data. I am developing methods to attribute outcomes to disease related health shocks, and to produce metrics which are comparative across diseases and populations despite differential health risk.

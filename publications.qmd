@@ -77,7 +77,7 @@ nocite: '@*'
 ::: {.pub-stats}
 ::: {.stat-grid}
 <div class="stat-item">
-<span class="stat-number">14</span>
+<span class="stat-number">16</span>
 <span class="stat-label">publications</span>
 </div>
 

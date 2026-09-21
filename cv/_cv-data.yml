@@ -4,7 +4,7 @@ links:
   researchgate: "https://www.researchgate.net/profile/Emily-Johnson-107"
 
 summary: >
-  Graduate student and population health researcher with over 7 years of experience with administrative data,
+  Health economist and population health researcher with over 7 years of experience with administrative data,
   health metrics measurement, and data science and biostatistical methods. Published author in prominent
   health policy journals with substantive experience with big data and health systems knowledge. Seeking
   opportunities to contribute to the body of health policy research.
@@ -13,7 +13,7 @@ education:
   - institution: "University of Southern Denmark"
     location: "Odense, DK"
     degree: "Doctor of Philosophy in Health Economics"
-    date: "Expected 2026"
+    date: "Expected September 2026"
     details:
       - "Affiliations: Danish Center for Health Economics, Danish Institute for Advanced Study"
       - "Supervised by Angela Chang, DSc, Liza Sopina, PhD, and Harsh Parikh, PhD"
@@ -52,12 +52,14 @@ research_experience:
   - institution: "University of Southern Denmark, Danish Center for Health Economics"
     location: "Odense, DK"
     positions:
+      - title: "Assistant Professor, Danish Centre for Health Economics; Visiting Fellow, Danish Institute for Advanced Study"
+        dates: "August 2026 – Present"
       - title: "Graduate student – Experienced Burden of Disease Project"
-        dates: "2023 - Present"
+        dates: "2023 - 2026"
         details:
           - "Measuring the economic, social, and health loss attributable to breast cancer, stroke, alcohol use disorder and depression over an 18-year period in Denmark using administrative health, education, and economic data."
       - title: "Graduate student – Predicting Early Mortality Project"
-        dates: "2023 – Present"
+        dates: "2023 – 2026"
         details:
           - "Identifying and describing individuals who dies early in Denmark using machine learning and decomposition methods and over 2000 individual-level health, economic, demographic and social characteristics."
       - title: "Contributor – International Network on Comparative Resource Use"

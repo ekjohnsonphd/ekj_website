@@ -1,6 +1,6 @@
 # Emily K. Johnson - Professional Website & CV
 
-Personal academic website for Emily K. Johnson, PhD student in Health Economics at the University of Southern Denmark.
+Personal academic website for Emily K. Johnson, Assistant Professor at the Danish Centre for Health Economics, University of Southern Denmark.
 
 Live site: [ekjohnson.com](https://ekjohnson.com)
 

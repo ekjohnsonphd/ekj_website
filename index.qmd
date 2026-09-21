@@ -30,7 +30,7 @@ page-layout: custom
 
 ## About Me
 
-I'm a PhD student at the [Danish Centre for Health Economics](https://www.sdu.dk/en/dache) at the University of Southern Denmark, where I study the complex relationships between population health, healthcare expenditures, and disease burden.
+I'm an Assistant Professor at the [Danish Centre for Health Economics (DaCHE)](https://www.sdu.dk/en/dache) and a Visiting Fellow at the [Danish Institute for Advanced Study (DIAS)](https://www.sdu.dk/en/dias) at the University of Southern Denmark, where I study the complex relationships between population health, healthcare expenditures, and disease burden.
 
 My research uses large-scale health data and quantitative methods to investigate real-world health policy challenges and to understand how we can better allocate resources and improve population outcomes. Before my PhD, I spent four years at the [Institute for Health Metrics and Evaluation (IHME)](https://www.healthdata.org/) as a Research Scientist, contributing to burden of disease and health spending research that informs health policy worldwide.
 
@@ -49,27 +49,83 @@ Disease burden estimation, comparative outcomes, fertility, mortality
 ::: {.g-col-12 .g-col-lg-6}
 ### Education
 
+::: {.edu-list}
+
+::: {.edu-item}
+[![](_assets/images/logos/sdu.svg){.edu-logo}]{.edu-logo-wrap}
+
+::: {.edu-text}
 **PhD in Health Economics**
 *University of Southern Denmark*
-In progress, expected 2026
+Defense September 2026
 
+:::
+
+:::
+
+::: {.edu-item}
+[![](_assets/images/logos/jhu.png){.edu-logo}]{.edu-logo-wrap}
+
+::: {.edu-text}
+**Visiting Graduate Student**
+*Johns Hopkins University*
+2025–2026
+
+:::
+
+:::
+
+::: {.edu-item}
+[![](_assets/images/logos/lse.svg){.edu-logo}]{.edu-logo-wrap}
+
+::: {.edu-text}
 **MSc in Health Data Science**
 *London School of Economics*
 2023
 
+:::
+
+:::
+
+::: {.edu-item}
+[![](_assets/images/logos/edinburgh.svg){.edu-logo}]{.edu-logo-wrap}
+
+::: {.edu-text}
 **PgCert in Epidemiology**
 *University of Edinburgh*
 2023
 
+:::
+
+:::
+
+::: {.edu-item}
+[![](_assets/images/logos/rice.svg){.edu-logo}]{.edu-logo-wrap}
+
+::: {.edu-text}
 **BA in Statistics**
 *Rice University*
 2017
+
+:::
+
+:::
+
+:::
 :::
 
 ::: {.g-col-12}
 ### Experience
 
 ::: {.grid}
+::: {.g-col-12 .g-col-md-6}
+**University of Southern Denmark**
+*Assistant Professor, DaCHE · Visiting Fellow, DIAS* 2026-present
+
+- Register-based research on the economic and social consequences of disease
+- Health expenditure and resource-use comparisons across countries
+:::
+
 ::: {.g-col-12 .g-col-md-6}
 **Institute for Health Metrics and Evaluation**
 *Research Scientist* 2019-2023
