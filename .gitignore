@@ -81,3 +81,7 @@ data/
 docs/dashboard.html
 docs/data/
 docs/site_libs/quarto-ojs/
+
+# Stray Zotero library exports (site uses _assets/bibliography/references.bib)
+/references.bib
+/references.bib.bak
