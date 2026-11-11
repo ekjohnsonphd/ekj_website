@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Unified pre-render script: generates publications page, CV HTML, and CV PDF
-from references.bib + cv/_cv-data.yml.
+Unified pre-render script. Reads references.bib, cv/_cv-data.yml and
+_assets/data/research.yml and generates the publications page, the CV (HTML
+and Typst PDF source), and the fragments in _generated/ that the hand-written
+pages include.
 
 Run automatically via quarto render (configured in _quarto.yml pre-render).
 
@@ -11,8 +13,11 @@ Usage:
 """
 
 import argparse
+import html
 import json
+import os
 import re
+import unicodedata
 import yaml
 from pathlib import Path
 
@@ -21,7 +26,6 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 
 BIB_PATH = Path("_assets/bibliography/references.bib")
-ARTICLES_BIB_PATH = Path("_assets/bibliography/articles.bib")
 CV_DATA_PATH = Path("cv/_cv-data.yml")
 PUBLICATIONS_QMD_PATH = Path("publications.qmd")
 CV_HTML_PATH = Path("cv/index.qmd")
@@ -56,12 +60,20 @@ PUBLIST_ET_AL_SHOW = 10       # For publication list: show first 10 if over thre
 # LaTeX / BibTeX cleaning
 # ---------------------------------------------------------------------------
 
-LATEX_ACCENTS = {
-    r"\'e": "e", r"\'a": "a", r"\'i": "i", r"\'o": "o", r"\'u": "u",
-    r"\"e": "e", r"\"a": "a", r"\"i": "i", r"\"o": "o", r"\"u": "u",
-    r"\~n": "n", r"\~a": "a",
-    r"\v{c}": "c", r"\v{s}": "s", r"\v{z}": "z",
-}
+LATEX_ACCENT_MARKS = {"'": "\u0301", '"': "\u0308", "~": "\u0303", "`": "\u0300", "^": "\u0302",
+                      "v": "\u030c", "c": "\u0327"}
+
+
+def _accent(match):
+    mark = LATEX_ACCENT_MARKS.get(match.group(1))
+    return unicodedata.normalize("NFC", match.group(2) + mark) if mark else match.group(2)
+
+
+def convert_accents(text):
+    """LaTeX accents to Unicode: {\\"o} -> ö, \\'e -> é, \\v{c} -> č."""
+    text = re.sub(r"""\{?\\(['"~`^])\{?([A-Za-z])\}?\}?""", _accent, text)
+    text = re.sub(r"\{?\\([vc])\{([A-Za-z])\}\}?", _accent, text)
+    return text
 
 
 def clean_latex(text):
@@ -69,9 +81,7 @@ def clean_latex(text):
     # Remove BibTeX title-casing markers: {{...}} → ...
     text = re.sub(r'\{\{(.+?)\}\}', r'\1', text)
     # Handle LaTeX accents: {\'e} or {\"{o}} etc.
-    for pattern, replacement in LATEX_ACCENTS.items():
-        text = text.replace("{" + pattern + "}", replacement)
-        text = text.replace(pattern, replacement)
+    text = convert_accents(text)
     # Handle \& → &
     text = text.replace(r"\&", "&")
     # Remove remaining single braces
@@ -86,9 +96,7 @@ def clean_title_for_cv(text):
     # Remove {{...}} markers but keep content
     text = re.sub(r'\{\{(.+?)\}\}', r'\1', text)
     # Handle accents
-    for pattern, replacement in LATEX_ACCENTS.items():
-        text = text.replace("{" + pattern + "}", replacement)
-        text = text.replace(pattern, replacement)
+    text = convert_accents(text)
     # Handle \& → &
     text = text.replace(r"\&", "&")
     # Remove remaining braces
@@ -325,663 +333,700 @@ def filter_pub_groups_for_cv(cv, pub_groups):
 
 
 # ---------------------------------------------------------------------------
-# Publications page generation (publications.qmd + articles.bib)
+# Research areas and publication records (from _assets/data/research.yml)
 # ---------------------------------------------------------------------------
 
-def generate_publications_page(entries):
-    """Generate publications.qmd and articles.bib from article entries."""
-    # Filter to articles for the publications page
-    pub_entries = [e for e in entries if is_for_publications_page(e)]
-    pub_entries.sort(key=get_year, reverse=True)
+RESEARCH_DATA_PATH = Path("_assets/data/research.yml")
+GENERATED_DIR = Path("_generated")
+FONT_DIR = Path("_assets/fonts")
+TALKS_INCLUDE = "talks.md"
 
-    total_pubs = len(pub_entries)
-    first_author_pubs = sum(1 for e in pub_entries if is_first_author(e))
+ABBREV_THRESHOLD = 8   # author lists longer than this are abbreviated around Johnson EK
+ABBREV_LEAD = 3
 
-    # Write articles.bib
-    with open(ARTICLES_BIB_PATH, "w", encoding="utf-8") as f:
-        for e in pub_entries:
-            f.write(e["_raw"])
-            f.write("\n\n")
+MONTHS = {m: i for i, m in enumerate(
+    ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], start=1)}
 
-    # Generate publications.qmd
-    with open(PUBLICATIONS_QMD_PATH, "w", encoding="utf-8") as f:
-        f.write(f"""---
-title: "Publications"
-bibliography: _assets/bibliography/articles.bib
-csl: _assets/bibliography/apa.csl
-nocite: '@*'
----
+JOURNAL_FIX = {"PLoS medicine": "PLOS Medicine"}
 
-```{{=html}}
-<style>
-.pub-stats {{
-  margin-bottom: 2em;
-  padding-bottom: 1em;
-  border-bottom: 2px solid #e0e0e0;
-}}
 
-.stat-grid {{
-  display: flex;
-  gap: 2em;
-  flex-wrap: wrap;
-}}
+def load_research():
+    with open(RESEARCH_DATA_PATH, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
 
-.stat-item {{
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.5em;
-}}
 
-.stat-number {{
-  font-size: 1.5em;
-  font-weight: 700;
-  color: #2c5282;
-}}
+def _yaml_entry(item, etype):
+    """Turn a YAML publication record into the same shape as a parsed bib entry."""
+    entry = {k: str(v) for k, v in item.items() if k != "key"}
+    entry["_type"] = etype
+    entry["_key"] = item["key"]
+    return entry
 
-.stat-label {{
-  font-size: 0.9em;
-  color: #666;
-}}
 
-.references {{
-  margin-left: 0;
-  padding-left: 0;
-}}
+def sort_key(entry):
+    return (get_year(entry), MONTHS.get(str(entry.get("month", "")).lower()[:3], 0))
 
-.references .csl-entry {{
-  margin-bottom: 1em;
-  padding-bottom: 0.75em;
-  border-bottom: 1px solid #e0e0e0;
-  line-height: 1.6;
-}}
 
-.references .csl-entry:last-child {{
-  border-bottom: none;
-}}
+def build_pub_groups(entries, research):
+    """Group publications into peer-reviewed / in-progress / other-media.
 
-.references .csl-entry em {{
-  font-style: italic;
-  color: #2c5282;
-  font-weight: 500;
-}}
+    Sources, in order: references.bib, then the in_progress and commentary
+    lists in research.yml (skipped if the key is already in the bib).
+    """
+    commentary_keys = research.get("commentary_keys") or {}
+    groups = {"peer-reviewed": [], "in-progress": [], "other-media": []}
+    seen = set()
 
-.references .csl-entry strong {{
-  color: #000;
-  font-weight: 700;
-}}
+    for entry in entries:
+        key = entry["_key"]
+        if key in commentary_keys:
+            entry["_kind"] = commentary_keys[key]
+            groups["other-media"].append(entry)
+            seen.add(key)
+            continue
+        cat = categorize(entry)
+        if cat is None:
+            continue
+        if cat == "other-media":
+            entry["_kind"] = get_media_type(entry).replace("-", " ").capitalize()
+        groups[cat].append(entry)
+        seen.add(key)
 
-.references .csl-entry a {{
-  color: #2563eb;
-  text-decoration: none;
-}}
+    for item in research.get("in_progress") or []:
+        if item["key"] not in seen:
+            groups["in-progress"].append(_yaml_entry(item, "unpublished"))
+    for item in research.get("commentary") or []:
+        if item["key"] not in seen:
+            entry = _yaml_entry(item, "article")
+            entry["_kind"] = item.get("kind", "Commentary")
+            groups["other-media"].append(entry)
 
-.references .csl-entry a:hover {{
-  text-decoration: underline;
-}}
-</style>
-```
+    for group in groups.values():
+        group.sort(key=sort_key, reverse=True)
+    return groups
 
-::: {{.pub-stats}}
-::: {{.stat-grid}}
-<div class="stat-item">
-<span class="stat-number">{total_pubs}</span>
-<span class="stat-label">publications</span>
-</div>
 
-<div class="stat-item">
-<span class="stat-number">{first_author_pubs}</span>
-<span class="stat-label">first author</span>
-</div>
+def areas_by_key(research):
+    """Map citation key -> list of area ids, in site order."""
+    out = {}
+    for area in research["areas"]:
+        for key in area.get("pubs") or []:
+            out.setdefault(key, []).append(area["id"])
+    return out
 
-<div class="stat-item">
-<span class="stat-number">9</span>
-<span class="stat-label">h-index</span>
-</div>
-:::
-:::
 
-::: {{#refs}}
-:::
-
-```{{=html}}
-<script>
-document.addEventListener('DOMContentLoaded', function() {{
-  const refs = document.getElementById('refs');
-  if (refs) {{
-    refs.innerHTML = refs.innerHTML
-      .replace(/Johnson, E\\. K\\./g, '<strong>Johnson, E. K.</strong>')
-      .replace(/Johnson, Emily K\\./g, '<strong>Johnson, Emily K.</strong>')
-      .replace(/Johnson, Emily(?!<)/g, '<strong>Johnson, Emily</strong>');
-  }}
-}});
-</script>
-```
-""")
-
-    print(f"Generated publications page: {total_pubs} articles ({first_author_pubs} first-author)")
+def check_area_keys(research, groups):
+    known = {e["_key"] for g in groups.values() for e in g}
+    for area in research["areas"]:
+        for key in area.get("pubs") or []:
+            if key not in known:
+                print(f"Warning: research.yml area '{area['id']}' lists unknown key '{key}'")
+    for key in research.get("selected") or []:
+        if key not in known:
+            print(f"Warning: research.yml 'selected' lists unknown key '{key}'")
 
 
 # ---------------------------------------------------------------------------
-# CV HTML generation (cv/index.qmd)
+# Shared publication formatting
 # ---------------------------------------------------------------------------
+
+def author_tokens(entry):
+    """Author list as tokens: (text, is_me) tuples, with '…' / 'et al.' strings
+    where a long list is abbreviated. Long lists keep the first three authors,
+    Johnson EK, and the last author."""
+    raw = entry.get("author", "")
+    authors = [a.strip() for a in re.split(r'\s+and\s+', raw) if a.strip()]
+    toks = [(abbreviate_author(a), AUTHOR_BOLD_SURNAME + ", E" in a and not is_consortium_author(a))
+            for a in authors]
+    n = len(toks)
+    if n <= ABBREV_THRESHOLD:
+        return toks
+    me = next((i for i, t in enumerate(toks) if t[1]), None)
+    out = toks[:ABBREV_LEAD]
+    if me is None or me < ABBREV_LEAD:
+        return out + ["et al."]
+    out.append("…")
+    out.append(toks[me])
+    if me < n - 1:
+        if me < n - 2:
+            out.append("…")
+        out.append(toks[-1])
+    return out
+
+
+def authors_md(entry):
+    return ", ".join(t if isinstance(t, str) else (f"**{t[0]}**" if t[1] else t[0])
+                     for t in author_tokens(entry))
+
+
+def authors_html(entry):
+    return ", ".join(t if isinstance(t, str) else
+                     (f"<strong>{html.escape(t[0])}</strong>" if t[1] else html.escape(t[0]))
+                     for t in author_tokens(entry))
+
+
+def pub_title(entry):
+    return clean_title_for_cv(entry.get("title", "")).replace("--", "–")
+
+
+def pub_journal(entry):
+    journal = clean_latex(entry.get("journal", ""))
+    return JOURNAL_FIX.get(journal, journal)
+
+
+def pub_url(entry):
+    if entry.get("doi"):
+        return "https://doi.org/" + entry["doi"]
+    return entry.get("url", "")
+
+
+def pub_item_html(entry, key_areas, area_titles, tags=True, year_gutter=True):
+    """One publication as an <li>. Used on the home, research and publications pages."""
+    key = entry["_key"]
+    ids = key_areas.get(key, [])
+    title = html.escape(pub_title(entry))
+    url = pub_url(entry)
+    title_html = f'<a href="{html.escape(url)}">{title}</a>' if url else title
+
+    meta = []
+    journal = pub_journal(entry)
+    if journal:
+        meta.append(f"<em>{html.escape(journal)}</em>")
+    if entry["_type"] == "unpublished":
+        meta.append(html.escape(entry.get("note", "In preparation")))
+    elif not year_gutter:
+        meta.append(str(get_year(entry)))
+    if entry.get("_kind"):
+        meta.append(html.escape(entry["_kind"]))
+    meta_html = ", ".join(meta)
+
+    tag_html = ""
+    if tags and ids:
+        links = " ".join(
+            f'<a class="pub-tag" href="research.html#{i}">{html.escape(area_titles[i])}</a>' for i in ids)
+        tag_html = f'<div class="pub-tags">{links}</div>'
+
+    year_html = ""
+    if year_gutter:
+        year = "" if entry["_type"] == "unpublished" else get_year(entry)
+        year_html = f'<div class="pub-year">{year}</div>'
+
+    return (
+        f'<li class="pub" data-areas="{" ".join(ids)}">{year_html}'
+        f'<div class="pub-body"><div class="pub-title">{title_html}</div>'
+        f'<div class="pub-authors">{authors_html(entry)}</div>'
+        f'<div class="pub-meta">{meta_html}</div>{tag_html}</div></li>'
+    )
+
+
+def pub_list_html(items, key_areas, area_titles, **kw):
+    cls = "pub-list" + ("" if kw.get("year_gutter", True) else " pub-list-plain")
+    rows = "\n".join(pub_item_html(e, key_areas, area_titles, **kw) for e in items)
+    return f'<ul class="{cls}">\n{rows}\n</ul>'
+
+
+def raw_html(block):
+    return "```{=html}\n" + block + "\n```\n"
+
+
+def md_inline(text):
+    """Minimal inline markdown -> HTML (bold only), for CV detail lines."""
+    return re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html.escape(text))
+
+
+def plural(n, word):
+    return f"{n} {word}" + ("" if n == 1 else "s")
+
+
+# ---------------------------------------------------------------------------
+# Publications page (publications.qmd)
+# ---------------------------------------------------------------------------
+
+def generate_publications_page(cv, research, groups):
+    key_areas = areas_by_key(research)
+    area_titles = {a["id"]: a["title"] for a in research["areas"]}
+    peer = groups["peer-reviewed"]
+    first_author = sum(1 for e in peer if is_first_author(e))
+    scholar = cv["links"]["scholar"]
+
+    used = {i for ids in key_areas.values() for i in ids}
+    buttons = ['<button type="button" class="pub-filter is-active" data-area="">All</button>']
+    for area in research["areas"]:
+        if area["id"] in used:
+            buttons.append(
+                f'<button type="button" class="pub-filter" data-area="{area["id"]}">'
+                f'{html.escape(area["title"])}</button>')
+
+    parts = [
+        "---",
+        'pagetitle: "Publications"',
+        "---",
+        "",
+        "<!-- AUTO-GENERATED by build-site.py. Do not edit. -->",
+        "",
+        "# Publications",
+        "",
+        f"[{plural(len(peer), 'peer-reviewed article')}, {first_author} as first author. "
+        f"Citation counts are on [Google Scholar]({scholar}).]{{.page-lede}}",
+        "",
+        raw_html('<div class="pub-filters" role="group" aria-label="Filter by research area">\n'
+                 + "\n".join(buttons) + "\n</div>"),
+        "## Peer-reviewed articles {.pub-section}",
+        "",
+        raw_html(pub_list_html(peer, key_areas, area_titles)),
+    ]
+    if groups["in-progress"]:
+        parts += ["## Works in progress {.pub-section}", "",
+                  raw_html(pub_list_html(groups["in-progress"], key_areas, area_titles))]
+    if groups["other-media"]:
+        parts += ["## Commentary {.pub-section}", "",
+                  raw_html(pub_list_html(groups["other-media"], key_areas, area_titles))]
+
+    parts.append(raw_html("""<script>
+(function () {
+  var buttons = document.querySelectorAll('.pub-filter');
+  var items = document.querySelectorAll('.pub-list .pub');
+  var sections = document.querySelectorAll('.pub-section');
+  function apply(area) {
+    items.forEach(function (li) {
+      var areas = (li.getAttribute('data-areas') || '').split(' ');
+      li.hidden = !!area && areas.indexOf(area) === -1;
+    });
+    sections.forEach(function (sec) {
+      sec.hidden = !sec.querySelector('.pub:not([hidden])');
+    });
+    buttons.forEach(function (b) {
+      var on = b.getAttribute('data-area') === area;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var area = b.getAttribute('data-area');
+      history.replaceState(null, '', area ? '#' + area : location.pathname);
+      apply(area);
+    });
+  });
+  var initial = location.hash.slice(1);
+  if (initial && document.querySelector('.pub-filter[data-area="' + initial + '"]')) apply(initial);
+})();
+</script>"""))
+
+    PUBLICATIONS_QMD_PATH.write_text("\n".join(parts), encoding="utf-8")
+    print(f"Generated {PUBLICATIONS_QMD_PATH}: {len(peer)} articles ({first_author} first-author)")
+
+
+# ---------------------------------------------------------------------------
+# Includes for hand-written pages (_generated/*.md)
+# ---------------------------------------------------------------------------
+
+def generate_includes(cv, research, groups):
+    """Write the fragments that index.qmd, research.qmd and talks.qmd include."""
+    GENERATED_DIR.mkdir(exist_ok=True)
+    key_areas = areas_by_key(research)
+    area_titles = {a["id"]: a["title"] for a in research["areas"]}
+    by_key = {e["_key"]: e for g in groups.values() for e in g}
+    published = {e["_key"] for e in groups["peer-reviewed"] + groups["other-media"]}
+
+    # Home page: research areas
+    rows = []
+    for area in research["areas"]:
+        keys = [k for k in area.get("pubs") or [] if k in by_key]
+        n_pub = sum(1 for k in keys if k in published)
+        n_wip = len(keys) - n_pub
+        evidence = []
+        if n_pub:
+            evidence.append(plural(n_pub, "publication"))
+        if n_wip:
+            evidence.append(f"{n_wip} in preparation")
+        if area.get("note"):
+            evidence.append(area["note"])
+        rows.append(
+            f'<a class="area-row" href="research.html#{area["id"]}">'
+            f'<span class="area-title">{html.escape(area["title"])}</span>'
+            f'<span class="area-summary">{html.escape(area["summary"].strip())}</span>'
+            f'<span class="area-meta">{html.escape(", ".join(evidence))}</span></a>')
+    (GENERATED_DIR / "home-areas.md").write_text(
+        raw_html('<div class="area-list">\n' + "\n".join(rows) + "\n</div>"), encoding="utf-8")
+
+    # Home page: selected publications
+    selected = [by_key[k] for k in research.get("selected") or [] if k in by_key]
+    (GENERATED_DIR / "home-selected.md").write_text(
+        raw_html(pub_list_html(selected, key_areas, area_titles, tags=False)), encoding="utf-8")
+
+    # Research page: publications per area, newest first
+    for area in research["areas"]:
+        items = [by_key[k] for k in area.get("pubs") or [] if k in by_key]
+        items.sort(key=lambda e: (e["_type"] == "unpublished", sort_key(e)), reverse=True)
+        body = raw_html(pub_list_html(items, key_areas, area_titles, tags=False)) if items else ""
+        (GENERATED_DIR / f"area-{area['id']}.md").write_text(body, encoding="utf-8")
+
+    # Talks page
+    (GENERATED_DIR / TALKS_INCLUDE).write_text(raw_html(talks_html(cv)), encoding="utf-8")
+    print(f"Generated includes in {GENERATED_DIR}/")
+
+
+def invited_venue_text(venue):
+    bits = [venue["host"]]
+    if venue.get("date"):
+        bits.append(str(venue["date"]))
+    if venue.get("status"):
+        bits.append(venue["status"])
+    return ", ".join(bits)
+
+
+def talks_html(cv):
+    out = []
+    if cv.get("invited_talks"):
+        out.append('<h2>Invited seminars</h2>')
+        for talk in cv["invited_talks"]:
+            venues = "".join(f"<li>{html.escape(invited_venue_text(v))}</li>" for v in talk["venues"])
+            out.append(f'<div class="talk"><div class="talk-title">{html.escape(talk["title"])}</div>'
+                       f'<ul class="talk-venues">{venues}</ul></div>')
+    out.append('<h2>Conference presentations</h2>')
+    for pres in cv["conference_presentations"]:
+        venues = "".join(f"<li>{html.escape(v)}</li>" for v in pres["venues"])
+        authors = html.escape(pres["authors"]).replace("Johnson EK", "<strong>Johnson EK</strong>")
+        out.append(f'<div class="talk"><div class="talk-title">{html.escape(pres["title"].rstrip("."))}</div>'
+                   f'<div class="talk-authors">{authors}</div>'
+                   f'<ul class="talk-venues">{venues}</ul></div>')
+    out.append('<h2>Teaching</h2>')
+    for inst in cv["teaching_experience"]:
+        out.append(cv_entry_html(inst["institution"], inst["location"],
+                                 [(r["title"], r["date"], []) for r in inst["roles"]]))
+    return "\n".join(out)
+
+
+# ---------------------------------------------------------------------------
+# CV, HTML version (cv/index.qmd)
+# ---------------------------------------------------------------------------
+
+def cv_entry_html(name, where, positions):
+    """positions: list of (title, dates, [detail lines])."""
+    rows = [f'<div class="cv-row cv-inst"><span>{html.escape(name)}</span>'
+            f'<span class="cv-right">{html.escape(where)}</span></div>']
+    for title, dates, details in positions:
+        rows.append(f'<div class="cv-row cv-pos"><span>{md_inline(title)}</span>'
+                    f'<span class="cv-right">{html.escape(str(dates))}</span></div>')
+        if details:
+            rows.append("<ul>" + "".join(f"<li>{md_inline(d)}</li>" for d in details) + "</ul>")
+    return '<div class="cv-entry">' + "".join(rows) + "</div>"
+
+
+def cv_pub_html(entry, numbered=None):
+    journal = pub_journal(entry)
+    bits = [authors_html(entry).rstrip(".") + ".", html.escape(pub_title(entry)).rstrip(".?") + (
+        "?" if pub_title(entry).endswith("?") else ".")]
+    if entry["_type"] == "unpublished":
+        bits.append(html.escape(entry.get("note", "In preparation")) + ".")
+    else:
+        kind = f" ({html.escape(entry['_kind'].lower())})" if entry.get("_kind") else ""
+        bits.append(f"<em>{html.escape(journal)}</em>{kind}. {get_year(entry)}.")
+    text = " ".join(bits)
+    url = pub_url(entry)
+    if url:
+        text += f' <a class="cv-doi" href="{html.escape(url)}">Link</a>'
+    return f"<li>{text}</li>"
+
+
+def cv_contact_links(cv):
+    links = cv["links"]
+    return [("ORCID", links.get("orcid")), ("Google Scholar", links.get("scholar")),
+            ("GitHub", links.get("github")), ("LinkedIn", links.get("linkedin"))]
+
 
 def generate_cv_html(cv, pub_groups):
-    """Generate cv/index.qmd from CV data + publications."""
-    lines = []
-    lines.append("<!-- AUTO-GENERATED by build-site.py — do not edit manually -->")
-    lines.append("---")
-    lines.append('title: "Curriculum Vitae"')
-    lines.append("toc: true")
-    lines.append("toc-depth: 2")
-    lines.append("page-navigation: false")
-    lines.append("format:")
-    lines.append("  html:")
-    lines.append("    css: cv.css")
-    lines.append("---")
-    lines.append("")
+    def section(title, body):
+        return f'<section class="cv-section"><h2>{title}</h2><div class="cv-content">{body}</div></section>'
 
-    # Header
-    lines.append("::: {.cv-header}")
-    lines.append(f"# {cv['name']}")
-    lines.append("::: {.cv-links}")
-    lines.append(f"[LinkedIn]({cv['links']['linkedin']}) | [ResearchGate]({cv['links']['researchgate']})")
-    lines.append(":::")
-    lines.append(":::")
-    lines.append("")
+    contact = [f'<a href="mailto:{cv["email"]}">{cv["email"]}</a>',
+               f'<a href="https://{cv["website"]}">{cv["website"]}</a>']
+    contact += [f'<a href="{url}">{label}</a>' for label, url in cv_contact_links(cv) if url]
 
-    # Download button
-    lines.append("::: {.cv-download}")
-    lines.append("[{{< fa file-pdf >}} Download PDF](cv-pdf.pdf){.btn .btn-primary}")
-    lines.append(":::")
-    lines.append("")
+    out = ['<div class="cv">',
+           '<header class="cv-head"><div>',
+           f'<h1>{html.escape(cv["name"])}</h1>',
+           f'<p class="cv-role">{html.escape(cv["title"])}<br>{html.escape(cv["affiliation"])}</p>',
+           f'<p class="cv-contact">{" · ".join(contact)}</p>',
+           '</div><a class="button" href="cv-pdf.pdf">Download PDF</a></header>']
 
-    # Summary
-    lines.append("## Summary {.cv-section}")
-    lines.append("")
-    lines.append("::: {.cv-summary}")
-    lines.append(cv["summary"].strip())
-    lines.append(":::")
-    lines.append("")
+    out.append(section("Profile", f"<p>{md_inline(cv['summary'].strip())}</p>"))
 
-    # Education
-    lines.append("## Education {.cv-section}")
-    lines.append("")
-    for edu in cv["education"]:
-        loc = edu["location"]
-        if "honors" in edu:
-            loc += f" | {edu['honors']}"
-        lines.append("::: {.cv-entry}")
-        lines.append("::: {.cv-entry-header}")
-        lines.append(f"[**{edu['institution']}**]{{.cv-institution}}")
-        lines.append(f"[{loc}]{{.cv-location}}")
-        lines.append(":::")
-        lines.append("::: {.cv-position}")
-        lines.append(f"[*{edu['degree']}*]{{.cv-title}}")
-        lines.append(f"[{edu['date']}]{{.cv-dates}}")
-        lines.append(":::")
-        if "details" in edu:
-            lines.append("")
-            for d in edu["details"]:
-                lines.append(f"- {d}")
-        lines.append(":::")
-        lines.append("")
+    out.append(section("Appointments", "".join(
+        cv_entry_html(a["institution"], a["location"],
+                      [(p["title"], p["dates"], p.get("details", [])) for p in a["positions"]])
+        for a in cv.get("appointments", []))))
 
-    # Publications
-    lines.append("## Publications {.cv-section}")
-    lines.append("")
+    edu = []
+    for e in cv["education"]:
+        degree = e["degree"] + (f" ({e['honors']})" if e.get("honors") else "")
+        edu.append(cv_entry_html(e["institution"], e["location"], [(degree, e["date"], e.get("details", []))]))
+    out.append(section("Education", "".join(edu)))
 
+    pubs = []
     if pub_groups["peer-reviewed"]:
-        lines.append("### Peer reviewed publications")
-        lines.append("")
-        lines.append("*All authors listed from first to last*")
-        lines.append("")
-        for entry in pub_groups["peer-reviewed"]:
-            authors = format_authors_cv(entry)
-            title = clean_title_for_cv(entry.get("title", ""))
-            journal = clean_latex(entry.get("journal", ""))
-            year = get_year(entry)
-            note = entry.get("note", "")
-            note_str = f" ({note})" if note else ""
-            lines.append("::: {.cv-publication}")
-            lines.append(f"{authors}. {title}. *{journal}*. {year}{note_str}.")
-            lines.append(":::")
-            lines.append("")
-
+        pubs.append('<h3>Peer-reviewed articles</h3><p class="cv-note">Author lists longer than '
+                    f'{ABBREV_THRESHOLD} names are abbreviated.</p>')
+        pubs.append('<ol class="cv-pubs">' + "".join(cv_pub_html(e) for e in pub_groups["peer-reviewed"]) + "</ol>")
     if pub_groups["in-progress"]:
-        lines.append("### Works in progress")
-        lines.append("")
-        for entry in pub_groups["in-progress"]:
-            authors = format_authors_cv(entry)
-            title = clean_title_for_cv(entry.get("title", ""))
-            status = entry.get("note", "")
-            lines.append("::: {.cv-publication}")
-            lines.append(f"{authors}. {title}. {status}.")
-            lines.append(":::")
-            lines.append("")
-
+        pubs.append("<h3>Works in progress</h3>")
+        pubs.append('<ul class="cv-pubs">' + "".join(cv_pub_html(e) for e in pub_groups["in-progress"]) + "</ul>")
     if pub_groups["other-media"]:
-        lines.append("### Other Media")
-        lines.append("")
-        for entry in pub_groups["other-media"]:
-            authors = format_authors_cv(entry)
-            title = clean_title_for_cv(entry.get("title", ""))
-            journal = clean_latex(entry.get("journal", ""))
-            year = get_year(entry)
-            media_type = get_media_type(entry).replace("-", " ")
-            lines.append("::: {.cv-publication}")
-            lines.append(f"{authors}. {title}. *{journal}* ({media_type}). {year}.")
-            lines.append(":::")
-            lines.append("")
+        pubs.append("<h3>Commentary</h3>")
+        pubs.append('<ul class="cv-pubs">' + "".join(cv_pub_html(e) for e in pub_groups["other-media"]) + "</ul>")
+    out.append(section("Publications", "".join(pubs)))
 
-    # Research Experience
-    lines.append("## Research Experience {.cv-section}")
-    lines.append("")
-    for inst in cv["research_experience"]:
-        lines.append("::: {.cv-entry}")
-        lines.append("::: {.cv-entry-header}")
-        lines.append(f"[**{inst['institution']}**]{{.cv-institution}}")
-        lines.append(f"[{inst['location']}]{{.cv-location}}")
-        lines.append(":::")
-        for pos in inst["positions"]:
-            lines.append("::: {.cv-position}")
-            lines.append(f"[*{pos['title']}*]{{.cv-title}}")
-            lines.append(f"[{pos['dates']}]{{.cv-dates}}")
-            lines.append(":::")
-            if "details" in pos:
-                lines.append("")
-                for d in pos["details"]:
-                    lines.append(f"- {d}")
-        lines.append(":::")
-        lines.append("")
+    out.append(section("Research experience", "".join(
+        cv_entry_html(i["institution"], i["location"],
+                      [(p["title"], p["dates"], p.get("details", [])) for p in i["positions"]])
+        for i in cv["research_experience"])))
 
-    # Conference Presentations
-    lines.append("## Conference Presentations {.cv-section}")
-    lines.append("")
+    talks = []
+    if cv.get("invited_talks"):
+        talks.append("<h3>Invited seminars</h3>")
+        for talk in cv["invited_talks"]:
+            venues = "".join(f"<li>{html.escape(invited_venue_text(v))}</li>" for v in talk["venues"])
+            talks.append(f'<div class="cv-entry"><div class="cv-talk">{html.escape(talk["title"])}</div><ul>{venues}</ul></div>')
+    talks.append("<h3>Conference presentations</h3>")
     for pres in cv["conference_presentations"]:
-        lines.append("::: {.cv-entry}")
-        lines.append(f"{pres['authors']}. *{pres['title']}*")
-        lines.append("")
-        lines.append("::: {.cv-venues}")
-        for v in pres["venues"]:
-            lines.append(f"- {v}")
-        lines.append(":::")
-        lines.append(":::")
-        lines.append("")
+        venues = "".join(f"<li>{html.escape(v)}</li>" for v in pres["venues"])
+        talks.append(f'<div class="cv-entry"><div class="cv-talk">{html.escape(pres["authors"])}. '
+                     f'<em>{html.escape(pres["title"])}</em></div><ul>{venues}</ul></div>')
+    out.append(section("Presentations", "".join(talks)))
 
-    # Teaching Experience
-    lines.append("## Teaching Experience {.cv-section}")
-    lines.append("")
-    for inst in cv["teaching_experience"]:
-        lines.append("::: {.cv-entry}")
-        lines.append("::: {.cv-entry-header}")
-        lines.append(f"[**{inst['institution']}**]{{.cv-institution}}")
-        lines.append(f"[{inst['location']}]{{.cv-location}}")
-        lines.append(":::")
-        for role in inst["roles"]:
-            lines.append("::: {.cv-position}")
-            lines.append(f"[*{role['title']}*]{{.cv-title}}")
-            lines.append(f"[{role['date']}]{{.cv-dates}}")
-            lines.append(":::")
-        lines.append(":::")
-        lines.append("")
+    out.append(section("Teaching", "".join(
+        cv_entry_html(i["institution"], i["location"], [(r["title"], r["date"], []) for r in i["roles"]])
+        for i in cv["teaching_experience"])))
 
-    # Other Professional Experience
-    lines.append("## Other Professional Experience {.cv-section}")
-    lines.append("")
-    for org in cv["other_experience"]:
-        lines.append("::: {.cv-entry}")
-        lines.append("::: {.cv-entry-header}")
-        lines.append(f"[**{org['organization']}**]{{.cv-institution}}")
-        lines.append(f"[{org['location']}]{{.cv-location}}")
-        lines.append(":::")
-        for pos in org["positions"]:
-            lines.append("::: {.cv-position}")
-            lines.append(f"[*{pos['title']}*]{{.cv-title}}")
-            lines.append(f"[{pos['dates']}]{{.cv-dates}}")
-            lines.append(":::")
-            if "details" in pos:
-                lines.append("")
-                for d in pos["details"]:
-                    lines.append(f"- {d}")
-        lines.append(":::")
-        lines.append("")
+    out.append(section("Other professional experience", "".join(
+        cv_entry_html(o["organization"], o["location"],
+                      [(p["title"], p["dates"], p.get("details", [])) for p in o["positions"]])
+        for o in cv["other_experience"])))
 
-    # Skills
-    lines.append("## Skills {.cv-section}")
-    lines.append("")
-    lines.append("::: {.cv-skills}")
-    for skill in cv["skills"]:
-        lines.append(f"- {skill}")
-    lines.append(":::")
-    lines.append("")
+    out.append(section("Skills", "<ul>" + "".join(f"<li>{md_inline(s)}</li>" for s in cv["skills"]) + "</ul>"))
+    out.append("</div>")
 
-    with open(CV_HTML_PATH, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
-
+    page = "\n".join([
+        "---",
+        'pagetitle: "Curriculum Vitae"',
+        "body-classes: cv-page",
+        "---",
+        "",
+        "<!-- AUTO-GENERATED by build-site.py. Do not edit. -->",
+        "",
+        raw_html("\n".join(out)),
+    ])
+    CV_HTML_PATH.write_text(page, encoding="utf-8")
     print(f"Generated {CV_HTML_PATH}")
 
 
 # ---------------------------------------------------------------------------
-# CV PDF generation (cv/cv-pdf.qmd, Typst format)
+# CV and publication list, PDF versions (Typst)
 # ---------------------------------------------------------------------------
 
+def ty(text):
+    """Escape text for use inside Typst content brackets."""
+    return re.sub(r'([\\#$*_@<>\[\]`~])', r'\\\1', str(text))
+
+
+def ty_md(text):
+    """Escape for Typst, keeping **bold** from the YAML."""
+    parts = re.split(r'\*\*(.+?)\*\*', str(text))
+    return "".join(f"#strong[{ty(p)}]" if i % 2 else ty(p) for i, p in enumerate(parts))
+
+
+def typst_front_matter(out_file, margin_x="0.9in", margin_y="0.8in"):
+    fonts = os.path.relpath(FONT_DIR, Path(out_file).parent)
+    return [
+        "---",
+        'title: ""',
+        "format:",
+        "  typst:",
+        "    margin:",
+        f'      x: "{margin_x}"',
+        f'      y: "{margin_y}"',
+        "    fontsize: 10pt",
+        '    mainfont: "Source Serif 4"',
+        f"    font-paths: [\"{fonts}\"]",
+        "bibliography: []",
+        "citeproc: false",
+        "---",
+        "",
+    ]
+
+
+def typst_preamble(cv, doc_label):
+    """Shared Typst styling and the name/contact header."""
+    contact = [f'#link("mailto:{cv["email"]}")[{ty(cv["email"])}]',
+               f'#link("https://{cv["website"]}")[{ty(cv["website"])}]']
+    contact += [f'#link("{url}")[{label}]' for label, url in cv_contact_links(cv) if url]
+    return [
+        "```{=typst}",
+        '#let ink = rgb("#1c211e")',
+        '#let muted = rgb("#5d665f")',
+        '#let accent = rgb("#1B4332")',
+        '#let rule = rgb("#c9d1c9")',
+        '#let sans = "Source Sans 3"',
+        "",
+        "#set page(numbering: \"1\", footer: context {",
+        "  set text(font: sans, size: 8pt, fill: muted)",
+        f"  [{ty(cv['name'])}, {doc_label} #h(1fr) #counter(page).display() of #counter(page).final().first()]",
+        "})",
+        '#set text(font: "Source Serif 4", size: 10pt, fill: ink)',
+        "#set par(justify: false, leading: 0.58em, spacing: 0.8em)",
+        "#set list(spacing: 0.55em, indent: 0.1em, body-indent: 0.6em, marker: text(fill: muted)[–])",
+        "#set enum(spacing: 0.75em, body-indent: 0.6em)",
+        "#show link: set text(fill: accent)",
+        "",
+        "#show heading.where(level: 1): it => block(above: 1.5em, below: 0.8em, sticky: true)[",
+        "  #text(font: sans, size: 8.5pt, weight: \"semibold\", tracking: 0.09em, fill: accent, upper(it.body))",
+        "  #v(-0.6em)",
+        "  #line(length: 100%, stroke: 0.4pt + rule)",
+        "]",
+        "#show heading.where(level: 2): it => block(above: 1.1em, below: 0.6em, sticky: true,",
+        "  text(font: sans, size: 9.5pt, weight: \"semibold\", fill: ink, it.body))",
+        "",
+        "#let side(body) = text(font: sans, size: 9pt, fill: muted, body)",
+        "#let inst(name, where) = block(above: 0.95em, below: 0.5em, sticky: true,",
+        "  grid(columns: (1fr, auto), column-gutter: 1.5em, text(weight: \"semibold\", name), side(where)))",
+        "#let role(title, when) = block(above: 0.5em, below: 0.45em, sticky: true,",
+        "  grid(columns: (1fr, auto), column-gutter: 1.5em, emph(title), side(when)))",
+        "",
+        f'#text(size: 22pt, weight: "semibold")[{ty(cv["name"])}]',
+        "#v(-0.75em)",
+        f'#text(font: sans, size: 10pt)[{ty(cv["title"])}, {ty(cv["affiliation"])}]',
+        "#v(-0.4em)",
+        f'#text(font: sans, size: 9pt, fill: muted)[{" #h(0.4em)·#h(0.4em) ".join(contact)}]',
+        "#v(0.2em)",
+        "```",
+        "",
+    ]
+
+
+def typst_entry(name, where, positions):
+    lines = ["```{=typst}", f"#inst[{ty(name)}][{ty(where)}]"]
+    open_block = True
+    for title, dates, details in positions:
+        if not open_block:
+            lines.append("```{=typst}")
+        lines.append(f"#role[{ty_md(title)}][{ty(dates)}]")
+        lines.append("```")
+        open_block = False
+        if details:
+            lines.append("")
+            lines += [f"- {d}" for d in details]
+            lines.append("")
+    if open_block:
+        lines.append("```")
+    lines.append("")
+    return lines
+
+
+def cv_pub_md(entry):
+    bits = [authors_md(entry).rstrip(".") + ".", pub_title(entry) + "."]
+    if entry["_type"] == "unpublished":
+        bits.append(entry.get("note", "In preparation") + ".")
+    else:
+        kind = f" ({entry['_kind'].lower()})" if entry.get("_kind") else ""
+        bits.append(f"*{pub_journal(entry)}*{kind}. {get_year(entry)}.")
+    return " ".join(bits)
+
+
 def generate_cv_pdf(cv, pub_groups, output_path=None):
-    """Generate cv/cv-pdf.qmd from CV data + publications.
-
-    output_path: if given, write to that Path instead of CV_PDF_PATH.
-    """
+    """Generate the Typst CV source. output_path overrides cv/cv-pdf.qmd (used for snapshots)."""
     out = Path(output_path) if output_path else CV_PDF_PATH
-    lines = []
+    lines = typst_front_matter(out) + typst_preamble(cv, "Curriculum Vitae")
 
-    # YAML front matter for Typst PDF
-    lines.append("---")
-    lines.append('title: ""')
-    lines.append("format:")
-    lines.append("  typst:")
-    lines.append("    margin:")
-    lines.append('      x: "1in"')
-    lines.append('      y: "0.75in"')
-    lines.append("    fontsize: 10pt")
-    lines.append('    mainfont: "Libertinus Serif"')
-    lines.append('    sansfont: "Libertinus Sans"')
-    lines.append("bibliography: []")
-    lines.append("citeproc: false")
-    lines.append("---")
-    lines.append("")
+    lines += ["# Profile", "", cv["summary"].strip(), ""]
 
-    # Custom Typst header block
-    lines.append("```{=typst}")
-    lines.append('#set page(numbering: "1")')
-    lines.append("#set par(justify: true)")
-    lines.append("#set text(size: 10pt)")
-    lines.append("")
-    lines.append("// Section heading style")
-    lines.append('#show heading.where(level: 1): it => {')
-    lines.append('  set text(size: 11pt, weight: "bold")')
-    lines.append("  v(0.6em)")
-    lines.append('  upper(text(tracking: 0.1em, it.body))')
-    lines.append("  v(-0.2em)")
-    lines.append('  line(length: 100%, stroke: 0.5pt)')
-    lines.append("  v(0.3em)")
-    lines.append("}")
-    lines.append("")
-    lines.append('#show heading.where(level: 2): it => {')
-    lines.append('  set text(size: 10pt, weight: "bold")')
-    lines.append("  v(0.3em)")
-    lines.append("  it.body")
-    lines.append("  v(0.1em)")
-    lines.append("}")
-    lines.append("")
-    # Name header
-    lines.append('#align(center)[')
-    lines.append(f'  #text(size: 24pt, weight: "bold")[{cv["name"]}]')
-    lines.append("  \\")
-    lines.append(f'  #link("{cv["links"]["linkedin"]}")[Linkedin]')
-    lines.append(f'  | #link("{cv["links"]["researchgate"]}")[ResearchGate]')
-    lines.append("]")
-    lines.append("```")
-    lines.append("")
+    if cv.get("appointments"):
+        lines += ["# Appointments", ""]
+        for a in cv["appointments"]:
+            lines += typst_entry(a["institution"], a["location"],
+                                 [(p["title"], p["dates"], p.get("details", [])) for p in a["positions"]])
 
-    # Summary
-    lines.append("# Summary")
-    lines.append("")
-    lines.append(cv["summary"].strip())
-    lines.append("")
+    lines += ["# Education", ""]
+    for e in cv["education"]:
+        degree = e["degree"] + (f" ({e['honors']})" if e.get("honors") else "")
+        lines += typst_entry(e["institution"], e["location"], [(degree, e["date"], e.get("details", []))])
 
-    # Education
-    lines.append("# Education")
-    lines.append("")
-    for edu in cv["education"]:
-        honors = f"  {edu['honors']}" if "honors" in edu else ""
-        lines.append("```{=typst}")
-        lines.append(f'#grid(columns: (1fr, auto), align: (left, right),')
-        lines.append(f'  [*{edu["institution"]}*], [{edu["location"]},{honors}]')
-        lines.append(f')')
-        lines.append(f'#grid(columns: (1fr, auto), align: (left, right),')
-        lines.append(f'  [_{edu["degree"]}_], [{edu["date"]}]')
-        lines.append(f')')
-        lines.append("```")
-        if "details" in edu:
-            lines.append("")
-            for d in edu["details"]:
-                d_typst = d.replace("**", "*")
-                lines.append(f"- {d_typst}")
-        lines.append("")
-
-    # Publications
-    lines.append("# Publications")
-    lines.append("")
+    lines += ["# Publications", ""]
     if pub_groups["peer-reviewed"]:
-        lines.append("## Peer reviewed publications")
-        lines.append("")
-        lines.append("*All authors listed from first to last*")
-        lines.append("")
-        for entry in pub_groups["peer-reviewed"]:
-            authors = format_authors_cv(entry)
-            title = clean_title_for_cv(entry.get("title", ""))
-            journal = clean_latex(entry.get("journal", ""))
-            year = get_year(entry)
-            note = entry.get("note", "")
-            note_str = f" ({note})" if note else ""
-            lines.append(f'{authors}. {title}. *{journal}*. {year}{note_str}.')
-            lines.append("")
-
+        lines += ["## Peer-reviewed articles", "",
+                  f"*Author lists longer than {ABBREV_THRESHOLD} names are abbreviated.*", ""]
+        for i, entry in enumerate(pub_groups["peer-reviewed"], start=1):
+            lines += [f"{i}. {cv_pub_md(entry)}", ""]
     if pub_groups["in-progress"]:
-        lines.append("## Works in progress")
-        lines.append("")
-        for entry in pub_groups["in-progress"]:
-            authors = format_authors_cv(entry)
-            title = clean_title_for_cv(entry.get("title", ""))
-            status = entry.get("note", "")
-            lines.append(f'{authors}. {title}. {status}.')
-            lines.append("")
-
+        lines += ["## Works in progress", ""]
+        lines += [f"- {cv_pub_md(e)}" for e in pub_groups["in-progress"]] + [""]
     if pub_groups["other-media"]:
-        lines.append("## Other Media")
-        lines.append("")
-        for entry in pub_groups["other-media"]:
-            authors = format_authors_cv(entry)
-            title = clean_title_for_cv(entry.get("title", ""))
-            journal = clean_latex(entry.get("journal", ""))
-            year = get_year(entry)
-            media_type = get_media_type(entry).replace("-", " ")
-            lines.append(f'{authors}. {title}. *{journal}* ({media_type}). {year}.')
-            lines.append("")
+        lines += ["## Commentary", ""]
+        lines += [f"- {cv_pub_md(e)}" for e in pub_groups["other-media"]] + [""]
 
-    # Research Experience
-    lines.append("# Research Experience")
-    lines.append("")
+    lines += ["# Research Experience", ""]
     for inst in cv["research_experience"]:
-        lines.append("```{=typst}")
-        lines.append(f'#grid(columns: (1fr, auto), align: (left, right),')
-        lines.append(f'  [*{inst["institution"]}*], [{inst["location"]}]')
-        lines.append(f')')
-        lines.append("```")
-        for pos in inst["positions"]:
-            lines.append("```{=typst}")
-            lines.append(f'#grid(columns: (1fr, auto), align: (left, right),')
-            lines.append(f'  [_{pos["title"]}_], [{pos["dates"]}]')
-            lines.append(f')')
-            lines.append("```")
-            if "details" in pos:
-                lines.append("")
-                for d in pos["details"]:
-                    lines.append(f"- {d}")
-        lines.append("")
+        lines += typst_entry(inst["institution"], inst["location"],
+                             [(p["title"], p["dates"], p.get("details", [])) for p in inst["positions"]])
 
-    # Conference Presentations
-    lines.append("# Conference Presentations")
-    lines.append("")
+    lines += ["# Presentations", ""]
+    if cv.get("invited_talks"):
+        lines += ["## Invited seminars", ""]
+        for talk in cv["invited_talks"]:
+            lines += [talk["title"], ""]
+            lines += [f"- {invited_venue_text(v)}" for v in talk["venues"]] + [""]
+    lines += ["## Conference presentations", ""]
     for pres in cv["conference_presentations"]:
-        lines.append(f'{pres["authors"]}. *{pres["title"]}*')
-        lines.append("")
-        for v in pres["venues"]:
-            lines.append(f"- {v}")
-        lines.append("")
+        lines += [f'{pres["authors"]}. *{pres["title"]}*', ""]
+        lines += [f"- {v}" for v in pres["venues"]] + [""]
 
-    # Teaching Experience
-    lines.append("# Teaching Experience")
-    lines.append("")
+    lines += ["# Teaching", ""]
     for inst in cv["teaching_experience"]:
-        lines.append("```{=typst}")
-        lines.append(f'#grid(columns: (1fr, auto), align: (left, right),')
-        lines.append(f'  [*{inst["institution"]}*], [{inst["location"]}]')
-        lines.append(f')')
-        lines.append("```")
-        for role in inst["roles"]:
-            lines.append("```{=typst}")
-            lines.append(f'#grid(columns: (1fr, auto), align: (left, right),')
-            lines.append(f'  [_{role["title"]}_], [{role["date"]}]')
-            lines.append(f')')
-            lines.append("```")
-        lines.append("")
+        lines += typst_entry(inst["institution"], inst["location"],
+                             [(r["title"], r["date"], []) for r in inst["roles"]])
 
-    # Other Professional Experience
-    lines.append("# Other Professional Experience")
-    lines.append("")
+    lines += ["# Other Professional Experience", ""]
     for org in cv["other_experience"]:
-        lines.append("```{=typst}")
-        lines.append(f'#grid(columns: (1fr, auto), align: (left, right),')
-        lines.append(f'  [*{org["organization"]}*], [{org["location"]}]')
-        lines.append(f')')
-        lines.append("```")
-        for pos in org["positions"]:
-            lines.append("```{=typst}")
-            lines.append(f'#grid(columns: (1fr, auto), align: (left, right),')
-            lines.append(f'  [_{pos["title"]}_], [{pos["dates"]}]')
-            lines.append(f')')
-            lines.append("```")
-        lines.append("")
+        lines += typst_entry(org["organization"], org["location"],
+                             [(p["title"], p["dates"], p.get("details", [])) for p in org["positions"]])
 
-    # Skills
-    lines.append("# Skills")
-    lines.append("")
-    for skill in cv["skills"]:
-        lines.append(f"- {skill}")
-    lines.append("")
+    lines += ["# Skills", ""]
+    lines += [f"- {s}" for s in cv["skills"]] + [""]
 
-    with open(out, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
-
+    out.write_text("\n".join(lines), encoding="utf-8")
     print(f"Generated {out}")
 
 
-# ---------------------------------------------------------------------------
-# Publication list generation (standalone numbered Typst PDF)
-# ---------------------------------------------------------------------------
-
 def generate_publist_typst(cv, pub_groups, output_path):
-    """Generate a standalone numbered publication list as a Typst .qmd file."""
+    """Generate a standalone numbered publication list (full author lists up to 30 names)."""
     output_path = Path(output_path)
     output_path.mkdir(parents=True, exist_ok=True)
     out_file = output_path / "publist.qmd"
 
     peer = pub_groups["peer-reviewed"]
-    inprog = pub_groups["in-progress"]
-    other = pub_groups["other-media"]
-
-    total_peer = len(peer)
-    first_author = sum(1 for e in peer if is_first_author(e))
+    stats = [plural(len(peer), "peer-reviewed article"),
+             f"{sum(1 for e in peer if is_first_author(e))} as first author"]
     h_index = cv.get("pub_stats", {}).get("h_index")
-
-    lines = []
-
-    # YAML front matter
-    lines.append("---")
-    lines.append('title: ""')
-    lines.append("format:")
-    lines.append("  typst:")
-    lines.append("    margin:")
-    lines.append('      x: "1in"')
-    lines.append('      y: "0.75in"')
-    lines.append("    fontsize: 10pt")
-    lines.append('    mainfont: "Libertinus Serif"')
-    lines.append('    sansfont: "Libertinus Sans"')
-    lines.append("bibliography: []")
-    lines.append("citeproc: false")
-    lines.append("---")
-    lines.append("")
-
-    # Typst preamble + header
-    lines.append("```{=typst}")
-    lines.append('#set page(numbering: "1")')
-    lines.append("#set par(justify: true)")
-    lines.append("#set text(size: 10pt)")
-    lines.append("")
-    lines.append('#show heading.where(level: 1): it => {')
-    lines.append('  set text(size: 11pt, weight: "bold")')
-    lines.append("  v(0.6em)")
-    lines.append('  upper(text(tracking: 0.1em, it.body))')
-    lines.append("  v(-0.2em)")
-    lines.append('  line(length: 100%, stroke: 0.5pt)')
-    lines.append("  v(0.3em)")
-    lines.append("}")
-    lines.append("")
-    lines.append('#show heading.where(level: 2): it => {')
-    lines.append('  set text(size: 10pt, weight: "bold")')
-    lines.append("  v(0.3em)")
-    lines.append("  it.body")
-    lines.append("  v(0.1em)")
-    lines.append("}")
-    lines.append("")
-    lines.append('#align(center)[')
-    lines.append(f'  #text(size: 24pt, weight: "bold")[{cv["name"]}]')
-    lines.append("  \\")
-    lines.append(f'  #link("{cv["links"]["linkedin"]}")[LinkedIn]')
-    lines.append(f'  | #link("{cv["links"]["researchgate"]}")[ResearchGate]')
-    lines.append("]")
-    lines.append("")
-
-    # Publication summary stats
-    stats_parts = [f"{total_peer} peer-reviewed publications", f"{first_author} first-author"]
     if h_index is not None:
-        stats_parts.append(f"h-index: {h_index}")
-    lines.append(f'#align(center)[_{" · ".join(stats_parts)}_]')
-    lines.append("```")
-    lines.append("")
+        stats.append(f"h-index {h_index}")
 
-    # Peer Reviewed
-    lines.append("# Peer Reviewed Publications")
-    lines.append("")
-    lines.append("*All authors listed from first to last*")
-    lines.append("")
+    lines = typst_front_matter(out_file) + typst_preamble(cv, "Publications")
+    lines += ["# Peer-Reviewed Articles", "", f"*{', '.join(stats)}. All authors listed from first to last.*", ""]
     for i, entry in enumerate(peer, start=1):
-        authors = format_authors_publist(entry)
-        title = clean_title_for_cv(entry.get("title", ""))
-        journal = clean_latex(entry.get("journal", ""))
-        year = get_year(entry)
-        note = entry.get("note", "")
-        note_str = f" ({note})" if note else ""
-        lines.append(f'{i}. {authors}. "{title}." *{journal}*. {year}{note_str}.')
-        lines.append("")
+        lines += [f'{i}. {format_authors_publist(entry)}. {pub_title(entry)}. '
+                  f'*{pub_journal(entry)}*. {get_year(entry)}.', ""]
+    if pub_groups["in-progress"]:
+        lines += ["# Works in Progress", ""]
+        for i, entry in enumerate(pub_groups["in-progress"], start=1):
+            lines += [f'{i}. {format_authors_publist(entry)}. {pub_title(entry)}. '
+                      f'{entry.get("note", "In preparation")}.', ""]
+    if pub_groups["other-media"]:
+        lines += ["# Commentary", ""]
+        for i, entry in enumerate(pub_groups["other-media"], start=1):
+            lines += [f'{i}. {format_authors_publist(entry)}. {pub_title(entry)}. '
+                      f'*{pub_journal(entry)}* ({entry.get("_kind", "commentary").lower()}). {get_year(entry)}.', ""]
 
-    # Works in Progress
-    if inprog:
-        lines.append("# Works in Progress")
-        lines.append("")
-        for i, entry in enumerate(inprog, start=1):
-            authors = format_authors_publist(entry)
-            title = clean_title_for_cv(entry.get("title", ""))
-            status = entry.get("note", "")
-            lines.append(f'{i}. {authors}. "{title}." {status}.')
-            lines.append("")
-
-    # Other Media
-    if other:
-        lines.append("# Other Media")
-        lines.append("")
-        for i, entry in enumerate(other, start=1):
-            authors = format_authors_publist(entry)
-            title = clean_title_for_cv(entry.get("title", ""))
-            journal = clean_latex(entry.get("journal", ""))
-            year = get_year(entry)
-            media_type = get_media_type(entry).replace("-", " ")
-            lines.append(f'{i}. {authors}. "{title}." *{journal}* ({media_type}). {year}.')
-            lines.append("")
-
-    with open(out_file, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
-
+    out_file.write_text("\n".join(lines), encoding="utf-8")
     print(f"Generated {out_file}")
 
 
@@ -1072,22 +1117,16 @@ def main():
     entries = parse_bib_file(BIB_PATH)
     print(f"Parsed {len(entries)} entries from {BIB_PATH}")
 
-    # Load CV data (non-publication sections)
+    # Load CV data (non-publication sections) and research areas
     with open(CV_DATA_PATH, "r", encoding="utf-8") as f:
         cv = yaml.safe_load(f)
+    research = load_research()
 
-    # Group publications for CV
-    pub_groups = {"peer-reviewed": [], "in-progress": [], "other-media": []}
-    for entry in entries:
-        cat = categorize(entry)
-        if cat and cat in pub_groups:
-            pub_groups[cat].append(entry)
+    # Group publications (bib + research.yml), newest first
+    pub_groups = build_pub_groups(entries, research)
+    check_area_keys(research, pub_groups)
 
-    # Sort each group by year descending
-    for group in pub_groups.values():
-        group.sort(key=get_year, reverse=True)
-
-    # Apply CV publication filter (publist always gets all publications)
+    # Optional cv_publications allowlist in _cv-data.yml (publist always gets everything)
     cv_pub_groups = filter_pub_groups_for_cv(cv, pub_groups)
 
     if args.snapshot:
@@ -1096,7 +1135,8 @@ def main():
         generate_publist_typst(cv, pub_groups, args.snapshot)
     else:
         # Normal site build
-        generate_publications_page(entries)
+        generate_publications_page(cv, research, pub_groups)
+        generate_includes(cv, research, pub_groups)
         generate_cv_html(cv, cv_pub_groups)
         generate_cv_pdf(cv, cv_pub_groups)
         submissions = parse_submission_tracker(OBSIDIAN_TRACKER_PATH)

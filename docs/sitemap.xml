@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ekjohnson.com/research.html</loc>
-    <lastmod>2026-09-21T16:14:03.023Z</lastmod>
+    <loc>https://ekjohnson.com/talks.html</loc>
+    <lastmod>2026-11-11T14:02:43.546Z</lastmod>
   </url>
   <url>
-    <loc>https://ekjohnson.com/index.html</loc>
-    <lastmod>2026-09-21T16:15:38.947Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ekjohnson.com/cv/index.html</loc>
-    <lastmod>2026-09-21T16:14:30.933Z</lastmod>
+    <loc>https://ekjohnson.com/publications.html</loc>
+    <lastmod>2026-11-11T14:06:21.290Z</lastmod>
   </url>
   <url>
     <loc>https://ekjohnson.com/dashboard.html</loc>
     <lastmod>2026-07-23T13:17:41.603Z</lastmod>
   </url>
   <url>
-    <loc>https://ekjohnson.com/publications.html</loc>
-    <lastmod>2026-09-21T16:14:30.932Z</lastmod>
+    <loc>https://ekjohnson.com/cv/index.html</loc>
+    <lastmod>2026-11-11T14:06:21.319Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ekjohnson.com/index.html</loc>
+    <lastmod>2026-11-11T14:02:43.524Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ekjohnson.com/research.html</loc>
+    <lastmod>2026-11-11T14:02:43.537Z</lastmod>
   </url>
 </urlset>

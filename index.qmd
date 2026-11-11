@@ -1,151 +1,128 @@
 ---
-title: ""
-description-meta: "Emily K. Johnson - Population Health Scientist"
-image: "_assets/images/IMG_0803.jpeg"
-page-navigation: false
-toc: false
-page-layout: custom
+pagetitle: "Emily K. Johnson"
+description-meta: "Emily K. Johnson, Assistant Professor at the Danish Centre for Health Economics, University of Southern Denmark."
+body-classes: home
 ---
 
-::: {.grid}
+::: {.hero}
 
-::: {.g-col-12 .g-col-md-3 #sidebar}
-![](_assets/images/IMG_0803.jpeg){.profile-img}
+::: {.hero-text}
 
+# Emily K. Johnson
 
-::: {.social-links}
+[Assistant Professor, [Danish Centre for Health Economics](https://www.sdu.dk/en/dache)<br>Visiting Fellow, [Danish Institute for Advanced Study](https://www.sdu.dk/en/dias)<br>University of Southern Denmark]{.hero-role}
+
+::: {.lead}
+I study how we measure population health, and I work to improve what large administrative datasets can tell us about health outcomes and their consequences.
+:::
+
+People are living longer but spending more of that time in poor health, societies are ageing while fertility declines, and multimorbidity makes disease burden hard to quantify. Much of my work asks what poor health costs individuals and societies in this setting, both in healthcare spending and in the long-term economic and social consequences of disease.
+
+::: {.hero-links}
 [Email](mailto:ejohnson@health.sdu.dk)
-
-[{{< fa brands linkedin >}} LinkedIn](https://www.linkedin.com/in/emilykatherinejohnson/)
-
-[{{< ai orcid >}} ORCID](https://orcid.org/0000-0001-9213-9533)
-
-[{{< ai google-scholar >}} Scholar](https://scholar.google.com/citations?user=upRo6SsAAAAJ&hl=en)
-
-[{{< fa brands github >}} GitHub](https://github.com/ekjohnsonphd)
-:::
+[Google Scholar](https://scholar.google.com/citations?user=upRo6SsAAAAJ&hl=en)
+[ORCID](https://orcid.org/0000-0001-9213-9533)
+[GitHub](https://github.com/ekjohnsonphd)
+[LinkedIn](https://www.linkedin.com/in/emilykatherinejohnson/)
+[CV](cv/index.qmd)
 :::
 
-::: {.g-col-12 .g-col-md-9 #main-content}
-
-## About Me
-
-I'm an Assistant Professor at the [Danish Centre for Health Economics (DaCHE)](https://www.sdu.dk/en/dache) and a Visiting Fellow at the [Danish Institute for Advanced Study (DIAS)](https://www.sdu.dk/en/dias) at the University of Southern Denmark, where I study the complex relationships between population health, healthcare expenditures, and disease burden.
-
-My research uses large-scale health data and quantitative methods to investigate real-world health policy challenges and to understand how we can better allocate resources and improve population outcomes. Before my PhD, I spent four years at the [Institute for Health Metrics and Evaluation (IHME)](https://www.healthdata.org/) as a Research Scientist, contributing to burden of disease and health spending research that informs health policy worldwide.
-
-::: {.grid .info-grid}
-
-::: {.g-col-12 .g-col-lg-6}
-### Research Interests
-
-**Health Economics** Healthcare expenditure, resource allocation, systems incentives
-**Population Health** 
-Disease burden estimation, comparative outcomes, fertility, mortality
-**Quantitative Methods** Causal inference, predictive modeling, large-scale data analysis
-**Health Policy** Evidence-based policy, health systems, health equity
 :::
 
-::: {.g-col-12 .g-col-lg-6}
+![](_assets/images/IMG_0803.jpeg){.hero-photo fig-alt="Portrait of Emily K. Johnson"}
+
+:::
+
+## Research
+
+{{< include _generated/home-areas.md >}}
+
+## Selected publications
+
+{{< include _generated/home-selected.md >}}
+
+[All publications](publications.qmd){.more-link}
+
+## Background
+
+::: {.background}
+
+::: {.background-col}
+
+### Positions
+
+::: {.bg-item}
+**University of Southern Denmark** [2026 – present]{.bg-date}
+
+Assistant Professor, Danish Centre for Health Economics, and Visiting Fellow, Danish Institute for Advanced Study. Register-based research on the economic and social consequences of disease, and comparisons of health expenditure and resource use across countries.
+:::
+
+::: {.bg-item}
+**Institute for Health Metrics and Evaluation** [2019 – 2023]{.bg-date}
+
+Research Scientist. Clinical informatics for the Global Burden of Disease study and disease expenditure estimation for US counties. Led the integration of Medicare and Medicaid claims data for IHME research.
+:::
+
+::: {.bg-item}
+**Epic Systems** [2017 – 2019]{.bg-date}
+
+Technical Services. Supported electronic health record implementations of population health management programs for large health systems.
+:::
+
+:::
+
+::: {.background-col}
+
 ### Education
 
-::: {.edu-list}
-
 ::: {.edu-item}
-[![](_assets/images/logos/sdu.svg){.edu-logo}]{.edu-logo-wrap}
+[![](_assets/images/logos/sdu.svg){fig-alt=""}]{.edu-logo}
 
 ::: {.edu-text}
-**PhD in Health Economics**
-*University of Southern Denmark*
-Defense September 2026
+**PhD in Health Economics** [2026]{.bg-date}
 
+University of Southern Denmark
 :::
-
 :::
 
 ::: {.edu-item}
-[![](_assets/images/logos/jhu.png){.edu-logo}]{.edu-logo-wrap}
+[![](_assets/images/logos/jhu.png){fig-alt=""}]{.edu-logo}
 
 ::: {.edu-text}
-**Visiting Graduate Student**
-*Johns Hopkins University*
-2025–2026
+**Visiting Graduate Student** [2025 – 2026]{.bg-date}
 
+Johns Hopkins University
 :::
-
 :::
 
 ::: {.edu-item}
-[![](_assets/images/logos/lse.svg){.edu-logo}]{.edu-logo-wrap}
+[![](_assets/images/logos/lse.svg){fig-alt=""}]{.edu-logo}
 
 ::: {.edu-text}
-**MSc in Health Data Science**
-*London School of Economics*
-2023
+**MSc in Health Data Science** [2023]{.bg-date}
 
+London School of Economics
 :::
-
 :::
 
 ::: {.edu-item}
-[![](_assets/images/logos/edinburgh.svg){.edu-logo}]{.edu-logo-wrap}
+[![](_assets/images/logos/edinburgh.svg){fig-alt=""}]{.edu-logo}
 
 ::: {.edu-text}
-**PgCert in Epidemiology**
-*University of Edinburgh*
-2023
+**PgCert in Epidemiology** [2023]{.bg-date}
 
+University of Edinburgh
 :::
-
 :::
 
 ::: {.edu-item}
-[![](_assets/images/logos/rice.svg){.edu-logo}]{.edu-logo-wrap}
+[![](_assets/images/logos/rice.svg){fig-alt=""}]{.edu-logo}
 
 ::: {.edu-text}
-**BA in Statistics**
-*Rice University*
-2017
+**BA in Statistics** [2017]{.bg-date}
 
+Rice University
 :::
-
-:::
-
-:::
-:::
-
-::: {.g-col-12}
-### Experience
-
-::: {.grid}
-::: {.g-col-12 .g-col-md-6}
-**University of Southern Denmark**
-*Assistant Professor, DaCHE · Visiting Fellow, DIAS* 2026-present
-
-- Register-based research on the economic and social consequences of disease
-- Health expenditure and resource-use comparisons across countries
-:::
-
-::: {.g-col-12 .g-col-md-6}
-**Institute for Health Metrics and Evaluation**
-*Research Scientist* 2019-2023
-
-- Clinical Informatics researcher, Global Burden of Disease
-- Disease expenditure researcher, US Counties Health Expenditure project
-- Led integration of Medicare and Medicaid claims data for IHME research
-:::
-
-::: {.g-col-12 .g-col-md-6}
-**Epic Systems**
-*Technical Services Engineer* 2017-2019
-
-- Supported EHR implementations of population health management programs
-- Troubleshot clinical software issues for large health systems
-
-:::
-:::
-:::
-
 :::
 
 :::

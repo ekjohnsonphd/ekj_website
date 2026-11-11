@@ -1,0 +1,7 @@
+---
+pagetitle: "Talks and teaching"
+---
+
+# Talks and teaching
+
+{{< include _generated/talks.md >}}

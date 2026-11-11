@@ -11,60 +11,54 @@ project:
   resources:
     - CNAME
     - .nojekyll
+    - "_assets/fonts/*.woff2"
 
-# Meta
-description-meta: "Emily K. Johnson Professional Website"
-author-meta: "Emily Johnson"
+description-meta: "Emily K. Johnson, Assistant Professor at the Danish Centre for Health Economics, University of Southern Denmark. Population health measurement and health economics."
+author-meta: "Emily K. Johnson"
 
 website:
-  title: "Emily Johnson"
-  image: "https://quarto.org/quarto.png"
-  description: "Professional Website of Emily K. Johnson"
- 
+  title: "Emily K. Johnson"
+  description: "Population health measurement and health economics. Assistant Professor, Danish Centre for Health Economics, University of Southern Denmark."
+  image: "_assets/images/IMG_0803.jpeg"
+  site-url: "https://ekjohnson.com"
+  open-graph: true
+  search: false
+
   navbar:
-    left:
-      - text: Home
-        href: index.qmd
+    title: "Emily K. Johnson"
+    collapse-below: md
+    right:
       - text: Research
         href: research.qmd
       - text: Publications
         href: publications.qmd
-
-    right:
+      - text: Talks and teaching
+        href: talks.qmd
       - text: CV
         href: cv/index.qmd
-      - icon: github
-        href: https://github.com/
-        target: _blank
-  
-  page-navigation: true
-  
-  page-footer:
-    left: "Emily K. Johnson &copy; <script>document.write(new Date().getFullYear())</script>"
-    right:
-      - icon: github
-        href: https://github.com/
-        target: _blank  
-  
-  open-graph: true
 
-  site-url: "https://ekjohnson.com"
-  
-bibliography: _assets/bibliography/references.bib
+  page-footer:
+    left: "Emily K. Johnson, University of Southern Denmark"
+    right:
+      - text: Email
+        href: mailto:ejohnson@health.sdu.dk
+      - text: Google Scholar
+        href: https://scholar.google.com/citations?user=upRo6SsAAAAJ&hl=en
+      - text: ORCID
+        href: https://orcid.org/0000-0001-9213-9533
+      - text: GitHub
+        href: https://github.com/ekjohnsonphd
+      - text: LinkedIn
+        href: https://www.linkedin.com/in/emilykatherinejohnson/
 
 format:
   html:
-    theme: flatly
-    css: styles.css
-    toc: true
-    footnotes-hover: true
-    code-copy: true
-    code-link: true
-    code-overflow: wrap
-    fig-align: center
+    theme: [default, theme.scss]
+    css: site.css
+    page-layout: custom
+    toc: false
     link-external-icon: false
     link-external-newwindow: true
     email-obfuscation: javascript
-    link-external-filter: '^(?:http:|https:)\/\/drganghe\.github\.io\/custom'
-    include-in-header: "_assets/includes/_academic.qmd"
-
+    anchor-sections: false
+    smooth-scroll: false

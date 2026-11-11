@@ -1,56 +1,75 @@
 ---
-title: "My Research"
+pagetitle: "Research"
 ---
 
-## Research Interests
+# Research
 
-My research focuses relate broadly to **population health metrics** and **health spending and services provision**. I'm interested in the distribution of health and resources across populations, and how large administrative datasets can be used for evidence-based health policy and public benefit.
+[My research measures population health and its consequences using large administrative datasets. The areas below differ in maturity: some rest on a publication record, and others are directions I am developing.]{.page-lede}
 
-My areas of focus include: 
+## The costs of poor health {#costs}
 
-- **Health inequalities and population distributions** — My research examines how health outcomes and their consequences are distributed across populations, and how disadvantages compound across domains.
+People are living longer but spending more time in poor health, and the costs of that poor health extend well beyond the healthcare system. I study both sides: the direct spending required to treat disease, and the long-term economic and social consequences for the people who become ill.
 
-- **Administrative health data** — I've worked with administrative health data from multiple angles: supporting EHR systems, integrating massive claims datasets, and conducting registry-based research.
-
-- **Health systems financing and provider incentives** — I am interested in how payment structures shape provider behavior and care allocation, and my experience at Epic and IHME has informed my perspective.
-
-## Current Projects
-
-::: {.project-card}
-**MOHEAD**
-
-<!-- TODO (Emily): replace this placeholder. Suggested content: what MOHEAD stands for, its aim, funder, collaborating institutions, and your role. -->
-Placeholder — project description coming soon.
-:::
-
-::: {.project-card}
+::: {.project}
 **Experienced Burden of Disease in Denmark**
 
-This is the focus of my PhD dissertation, which is funded by Danmarks Frie Forskningfond and Helsefonden. The project aims to measure the economic, social, and psychological consequences of disease burden in Denmark using register data. I am developing methods to attribute outcomes to disease related health shocks, and to produce metrics which are comparative across diseases and populations despite differential health risk.
+My PhD research, funded by Danmarks Frie Forskningsfond and Helsefonden, measured the economic, social, and psychological consequences of disease burden in Denmark using register data. I developed methods to attribute outcomes to disease-related health shocks, and to produce metrics which are comparable across diseases and populations despite differential health risk.
 :::
 
-::: {.project-card}
+::: {.project}
+**International Network on Comparative Resource Use (INCORE)**
+
+The INCORE consortium conducts health systems utilization and expenditure research for comparative research and policy applications. The network includes researchers from Oxford University, IHME, the University of Western Australia, and 18 other countries. This is early-stage work, and we are starting with a focus on healthcare utilization with plans to expand to expenditure and resource allocation.
+:::
+
+::: {.project}
+**Disease Expenditure Accounts for US Counties** [2021 – 2023]{.project-date}
+
+This project used large-scale health expenditure data to estimate disease-specific health spending across US counties, with the aim of identifying disparities in health spending and informing resource allocation decisions. I contributed to data integration, modeling, and analysis as part of the US Counties Health Expenditure project at IHME.
+:::
+
+{{< include _generated/area-costs.md >}}
+
+## Population health measurement {#measurement}
+
+Health policy depends on estimates of who is ill, who dies, and of what, and those estimates depend on how well routine data can be turned into population metrics. I have worked on this problem with hospital records, insurance claims, and national registers.
+
+::: {.project}
 **Predicting and Describing Who Dies Early**
 
-This project is a collaboration with researchers at Erasmus University and the Norwegian Institute of Public Health, to predict and describe who is at risk of premature mortality in 3 european countries using administrative data. We're using machine learning methods to leverage the richness of register data, and to empirically assess the contributors to mortality inequality across the population. I contribute to model development, project management, and analysis of the Danish data.
+A collaboration with researchers at Erasmus University and the Norwegian Institute of Public Health to predict and describe who is at risk of premature mortality in three European countries using administrative data. We use machine learning methods to leverage the richness of register data, and to empirically assess the contributors to mortality inequality across the population. I contribute to model development, project management, and analysis of the Danish data.
 :::
 
-::: {.project-card}
-**International Network on COmparative REsource use (INCORE)**
-
-The INCORE consortium conducts health systems utilization and expenditure research for comparative research and policy applications. The network includes researchers from Oxford University, IHME, University of Western Australia, and 18 other countries. This is early stage work, and we are starting with a focus on healthcare utilization with plans to expand to expenditure and resource allocation.
-:::
-
-## Past Projects
-
-::: {.project-card}
-**Disease Expenditure Accounts for US Counties**
-
-This project used large-scale health expenditure data to estimate disease-specific health spending across US counties. The project aimed to identify disparities in health spending and inform resource allocation decisions. I contributed to data integration, modeling, and analysis. This work was part of the US Counties Health Expenditure project at IHME.
-:::
-
-::: {.project-card}
-**Incidence and Prevalence from Clinical Administrative Data**
+::: {.project}
+**Incidence and Prevalence from Clinical Administrative Data** [2019 – 2021]{.project-date}
 
 Hospital admissions records are a key input to the Global Burden of Disease, but clinical encounters must be translated into incidence and prevalence for disease-specific modeling. On the Clinical Informatics team at IHME, I developed methods to estimate incidence and prevalence from hospital admissions data for the Global Burden of Disease.
+:::
+
+{{< include _generated/area-measurement.md >}}
+
+## Fertility and women's health {#women}
+
+Fertility is declining in many countries while populations age, and women's health remains poorly captured by standard health metrics. My work in this area examines how illness affects family formation, how the economic consequences of disease fall on women, and when sex differences in outcomes such as life expectancy should be read as inequalities.
+
+{{< include _generated/area-women.md >}}
+
+## Digital environments and mental health {#digital}
+
+I am interested in how our built digital environment acts on mental health. This is a newer direction in my work. With colleagues, I have written on studying artificial intelligence with the methods of epidemiology, as an exposure whose effects on population health can be measured.
+
+{{< include _generated/area-digital.md >}}
+
+## AI in quantitative research {#ai-research}
+
+I use AI tools throughout my research workflow, and I teach other researchers how to do the same. My approach emphasises oversight: the researcher should be able to see what the tool is doing, decide which changes to accept, and audit what it has done afterwards. I have given an invited seminar on this topic at Aarhus University, and a second is upcoming at Yale University.
+
+{{< include _generated/area-ai-research.md >}}
+
+## Other projects {#other}
+
+::: {.project}
+**MOHEAD**
+
+[Description to be added.]{.placeholder}
 :::

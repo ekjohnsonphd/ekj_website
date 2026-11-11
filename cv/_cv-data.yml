@@ -1,21 +1,41 @@
 name: "Emily K. Johnson"
+title: "Assistant Professor, Danish Centre for Health Economics"
+affiliation: "University of Southern Denmark"
+location: "Odense, Denmark"
+email: "ejohnson@health.sdu.dk"
+website: "ekjohnson.com"
+
 links:
+  orcid: "https://orcid.org/0000-0001-9213-9533"
+  scholar: "https://scholar.google.com/citations?user=upRo6SsAAAAJ&hl=en"
+  github: "https://github.com/ekjohnsonphd"
   linkedin: "https://www.linkedin.com/in/emilykatherinejohnson/"
   researchgate: "https://www.researchgate.net/profile/Emily-Johnson-107"
 
 summary: >
-  Health economist and population health researcher with over 7 years of experience with administrative data,
-  health metrics measurement, and data science and biostatistical methods. Published author in prominent
-  health policy journals with substantive experience with big data and health systems knowledge. Seeking
-  opportunities to contribute to the body of health policy research.
+  Health economist and population health researcher, trained as a statistician and health data scientist.
+  My work measures population health and its economic consequences using administrative data at national
+  scale, with methods spanning register-based causal inference, machine learning, and Bayesian modelling.
+  Before my PhD I spent four years as a Research Scientist at the Institute for Health Metrics and Evaluation
+  and two years at Epic Systems. I collaborate with research groups at the University of Oxford, the Institute
+  for Health Metrics and Evaluation, Johns Hopkins University, and Yale University.
+
+appointments:
+  - institution: "University of Southern Denmark"
+    location: "Odense, DK"
+    positions:
+      - title: "Assistant Professor, Danish Centre for Health Economics"
+        dates: "August 2026 – Present"
+      - title: "Visiting Fellow, Danish Institute for Advanced Study"
+        dates: "2026 – Present"
 
 education:
   - institution: "University of Southern Denmark"
     location: "Odense, DK"
     degree: "Doctor of Philosophy in Health Economics"
-    date: "Expected September 2026"
+    date: "2026"
     details:
-      - "Affiliations: Danish Center for Health Economics, Danish Institute for Advanced Study"
+      - "Affiliations: Danish Centre for Health Economics, Danish Institute for Advanced Study"
       - "Supervised by Angela Chang, DSc, Liza Sopina, PhD, and Harsh Parikh, PhD"
 
   - institution: "Johns Hopkins University"
@@ -27,9 +47,9 @@ education:
     location: "London, UK"
     degree: "Master of Science in Health Data Science"
     date: "July 2023"
-    honors: "Level: Distinction"
+    honors: "Distinction"
     details:
-      - "**Prize for Excellence in MSc Health Data Science** – Highest Average 2022/23"
+      - "**Prize for Excellence in MSc Health Data Science**, highest average 2022/23"
       - "Program Representative, Student Staff Liaison Committee"
 
   - institution: "University of Edinburgh"
@@ -40,44 +60,53 @@ education:
   - institution: "University of Washington"
     location: "Seattle, WA, USA"
     degree: "Non-matriculated postgraduate student during full-time employment"
-    date: "2019-2022"
+    date: "2019 – 2022"
 
   - institution: "Rice University"
     location: "Houston, TX, USA"
     degree: "Bachelor of Arts in Statistics, Minor in Global Health Technologies"
     date: "May 2017"
-    honors: "GPA: 3.52"
+    honors: "GPA 3.52"
 
 research_experience:
-  - institution: "University of Southern Denmark, Danish Center for Health Economics"
+  - institution: "University of Southern Denmark, Danish Centre for Health Economics"
     location: "Odense, DK"
     positions:
-      - title: "Assistant Professor, Danish Centre for Health Economics; Visiting Fellow, Danish Institute for Advanced Study"
-        dates: "August 2026 – Present"
-      - title: "Graduate student – Experienced Burden of Disease Project"
-        dates: "2023 - 2026"
-        details:
-          - "Measuring the economic, social, and health loss attributable to breast cancer, stroke, alcohol use disorder and depression over an 18-year period in Denmark using administrative health, education, and economic data."
-      - title: "Graduate student – Predicting Early Mortality Project"
+      - title: "Experienced Burden of Disease Project (PhD research)"
         dates: "2023 – 2026"
         details:
-          - "Identifying and describing individuals who dies early in Denmark using machine learning and decomposition methods and over 2000 individual-level health, economic, demographic and social characteristics."
-      - title: "Contributor – International Network on Comparative Resource Use"
+          - "Measuring the economic, social, and health loss attributable to breast cancer, stroke, alcohol use disorder and depression over an 18-year period in Denmark using administrative health, education, and economic data."
+      - title: "Predicting Early Mortality Project (PhD research)"
+        dates: "2023 – 2026"
+        details:
+          - "Identifying and describing individuals who die early in Denmark using machine learning and decomposition methods and over 2000 individual-level health, economic, demographic and social characteristics."
+      - title: "Contributor, International Network on Comparative Resource Use"
         dates: "2024 – Present"
         details:
-          - "Comparing hospital resource use by disease, age, sex, and comorbidity status in Denmark to 16 other high-income countries globally in collaboration with the University of Oxford and Institute of Health Metrics and Evaluation."
+          - "Comparing hospital resource use by disease, age, sex, and comorbidity status in Denmark to 16 other high-income countries globally in collaboration with the University of Oxford and Institute for Health Metrics and Evaluation."
 
   - institution: "University of Washington, Institute for Health Metrics and Evaluation"
     location: "Seattle, WA"
     positions:
-      - title: "Research Scientist I – US Disease Expenditure Project"
-        dates: "2021 - 2023"
+      - title: "Research Scientist I, US Disease Expenditure Project"
+        dates: "2021 – 2023"
         details:
           - "Estimated US county and state-level disease-specific health expenditure by payer and type of care from 2000-2019, using billions of rows of administrative data and econometric and small area estimation methods."
-      - title: "Research Scientist I – Global Burden of Disease (GBD), Clinical Informatics"
-        dates: "2019-2021"
+      - title: "Research Scientist I, Global Burden of Disease (GBD), Clinical Informatics"
+        dates: "2019 – 2021"
         details:
           - "Estimated incidence and prevalence of disease through Bayesian mixed effects modeling for 85 diseases and injuries using hospital administrative data from over 30 countries. Modeled outputs are a key input to Global Burden of Disease morbidity modeling."
+
+# Invited talks. Leave date empty until it is known; the site then shows the
+# entry without a date.
+invited_talks:
+  - title: "Using AI for quantitative research"
+    venues:
+      - host: "Yale University"
+        date: ""
+        status: "Upcoming"
+      - host: "Aarhus University"
+        date: ""
 
 conference_presentations:
   - authors: "Johnson EK, Parikh H, Ettman C, Ge G, Sopina L, Chang AY"
@@ -103,17 +132,17 @@ teaching_experience:
   - institution: "University of Southern Denmark"
     location: "Esbjerg, DK"
     roles:
-      - title: "Lecturer, examiner, and course administrator – Global Health Policy Graduate Course"
+      - title: "Lecturer, examiner, and course administrator, Global Health Policy graduate course"
         date: "Spring 2024"
-      - title: "MSc. thesis supervision – MSc. Data Science, 4 students"
+      - title: "MSc thesis supervision, MSc Data Science, 4 students"
         date: "Spring 2024, 2025"
 
   - institution: "Rice University"
     location: "Houston, TX"
     roles:
-      - title: "Teaching assistant – Global Health Technology Undergraduate Course"
+      - title: "Teaching assistant, Global Health Technology undergraduate course"
         date: "Spring 2017"
-      - title: "Teaching assistant – Probability and Statistics Undergraduate Course"
+      - title: "Teaching assistant, Probability and Statistics undergraduate course"
         date: "Fall 2016"
 
 other_experience:
@@ -133,21 +162,9 @@ other_experience:
 pub_stats:
   h_index: 9
 
-# Optional: if present, only these bib keys appear in the CV publication section.
-# The full publication list (publist.qmd) always shows all publications.
-cv_publications:
-  peer-reviewed:
-    - johnson2025BreastCancer
-    - johnson2026LastingIncome
-    - chang2025SexDifferences
-  in-progress:
-    - johnson2026ParentFormation
-    - johnson2026EarlyMortality
-  other-media:
-    - chang2025ConfrontingSystematic
-
 skills:
   - "8 years experience in R (data.table, dplyr, arrow, ggplot, plotly), 6 in Python (pandas, seaborn, matplotlib, arrow), and 3 in SQL."
   - "Experienced with Github, repository management, and version control."
   - "Experienced with parquet, Spark, Arrow, distributed and cluster-based computation, and management of big data on the scale of billions of rows and tens of terabytes of memory."
+  - "Familiar with Claude Code, Elicit, and agentic AI workflows."
   - "Conversant in French, Spanish and Danish."

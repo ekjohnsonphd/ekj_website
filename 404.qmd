@@ -1,7 +1,7 @@
 ---
-title: Page Unplugged
+pagetitle: "Page not found"
 ---
 
-The page you requested cannot be found (perhaps it was unplugged).
+# Page not found
 
-You may want to try searching to find the page's new plug.
+The page you were looking for does not exist. Return to the [home page](index.qmd).
